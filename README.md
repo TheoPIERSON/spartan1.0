@@ -4,5 +4,5 @@
 
 - main
 - develop
-- qa
+- test
 - us
