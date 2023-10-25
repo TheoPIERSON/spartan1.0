@@ -1,0 +1,15 @@
+version: "2.22"
+
+services:
+  frontend:
+    image: spartan-frontend-image
+    build:
+      context: ./spartan-front
+
+  backend:
+    image: spartan-backend-image
+    build:
+      context: ./spartan-back
+
+  database:
+    image: spartan-database-image
