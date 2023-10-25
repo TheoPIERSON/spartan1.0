@@ -1,0 +1,26 @@
+# Etape 1 : Construction du projet angular
+
+# Image de base
+FROM node:latest as build
+
+# Création du répertoire de base
+WORKDIR /usr/local/app
+
+# Copie de sources dans le repertoire
+COPY ./ /usr/local/app/
+
+# Installation des dépendences
+RUN npm install 
+
+# Création du livrable
+RUN npm run build
+
+# Etape 2 : Déploiement sur le serveur
+FROM nginx:latest
+
+COPY --from=build /usr/local/app/dist/spartan-front /usr/share/nginx/html
+
+EXPOSE 80
+
+# docker build -t cours-docker:latest .
+# docker run -d -p 8080:80 cours-docker
