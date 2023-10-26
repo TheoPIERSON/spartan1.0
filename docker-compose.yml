@@ -3,13 +3,19 @@ version: "2.22"
 services:
   frontend:
     image: spartan-frontend-image
+    ports:
+      - "4200:4200"
     build:
       context: ./spartan-front
+      dockerfile: dockerfile
 
   backend:
     image: spartan-backend-image
+    ports:
+      - "8080:80"
     build:
       context: ./spartan-back
+      dockerfile: dockerfile
 
-  database:
-    image: spartan-database-image
+  #database:
+   # image: spartan-database-image

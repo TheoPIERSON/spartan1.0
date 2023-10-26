@@ -1,12 +1,42 @@
-FROM eclipse-temurin:17-jdk-focal
+# AS <NAME> to name this stage as maven
+# FROM maven:3.6.3 AS maven
+# LABEL MAINTAINER="sgwebfreelancer@gmail.com"
 
-WORKDIR /app
+# WORKDIR /usr/src/app
+# COPY . /usr/src/app
+# Compile and package the application to an executable JAR
+# RUN mvn package
 
-COPY .mvn/ ./mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
+# For Java 11,
+# FROM adoptopenjdk/openjdk11:alpine-jre
 
-COPY src ./src
+# ARG JAR_FILE=spring-boot-api-tutorial.jar
 
-CMD ["./mvnw", "spring-boot:run"]
+# WORKDIR /opt/app
 
+# Copy the spring-boot-api-tutorial.jar from the maven stage to the /opt/app directory of the current stage.
+# COPY --from=maven /usr/src/app/target/${JAR_FILE} /opt/app/
+
+# ENTRYPOINT ["java","-jar","spring-boot-api-tutorial.jar"]
+
+
+
+
+FROM maven:3-openjdk-17 as build
+
+ENV MAVEN_HOME=/usr/local/maven
+
+ENV PATH $PATH:/usr/local/maven/bin
+
+WORKDIR /app/spartan-back/
+
+# COPY /spartan-back/pom.xml /app/spartan-back/pom.xml
+# COPY /spartan-back /app/spartan-back/
+COPY ./* /app/spartan-back/
+RUN mvn clean install
+
+# COPY /app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar /app/spartan-back/target/
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "/app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar"]
