@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-SpartanApplication<spartan>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.onyx.spartan.SpartanApplication",
+      "projectName": "spartan",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
