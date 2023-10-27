@@ -17,5 +17,7 @@ services:
       context: ./spartan-back
       dockerfile: dockerfile
 
-  #database:
-   # image: spartan-database-image
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
