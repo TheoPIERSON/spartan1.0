@@ -1,5 +1,4 @@
-package com.onyx.configs;
-
+package com.onyx.spartan.configs;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +13,7 @@ import java.sql.SQLException;
 
 @Configuration
 public class DatabaseConfig{
+
     @Value("${spring.datasource.url}")
     private String dbUrl;
 
@@ -23,7 +23,7 @@ public class DatabaseConfig{
     @Value("${spring.datasource.password}")
     private String dbPassword;
 
-// le Bean toujours le meme 
+// le Bean toujours le meme
 
     @Bean
     public DataSource dataSource() {
