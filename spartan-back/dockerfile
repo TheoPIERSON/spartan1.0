@@ -22,21 +22,42 @@
 
 
 
-FROM maven:3-openjdk-17 as build
+#FROM maven:3-openjdk-17 as build
+#
+#ENV MAVEN_HOME=/usr/local/maven
+#
+#ENV PATH $PATH:/usr/local/maven/bin
+#
+#WORKDIR /app/spartan-back/
+#
+## COPY /spartan-back/pom.xml /app/spartan-back/pom.xml
+## COPY /spartan-back /app/spartan-back/
+#COPY ./* /app/spartan-back/
+#RUN mvn clean package
+#
+#FROM openjdk:17-jdk-alpine
+#
+#COPY --from=build /app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar /app/spartan-back/target/
+#
+#ENTRYPOINT ["java", "-jar", "/app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar"]
 
-ENV MAVEN_HOME=/usr/local/maven
+# CMD ["java", "-jar", "/app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar"]
 
-ENV PATH $PATH:/usr/local/maven/bin
+FROM maven:3.8.5-openjdk-17 as build
 
-WORKDIR /app/spartan-back/
+ENV HOME=/app/spartan-back/
+RUN mkdir -p $HOME
 
-# COPY /spartan-back/pom.xml /app/spartan-back/pom.xml
-# COPY /spartan-back /app/spartan-back/
-COPY ./* /app/spartan-back/
-RUN mvn clean install
+WORKDIR $HOME
+
+COPY /pom.xml /app/spartan-back/pom.xml
+COPY /src /app/spartan-back/src
+#COPY ./* $HOME
+RUN mvn clean package
 
 # COPY /app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar /app/spartan-back/target/
 
-EXPOSE 8080
+FROM openjdk:17-jdk-alpine
+COPY --from=build  /app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar /app/spartan-0.0.1-SNAPSHOT.jar
 
-CMD ["java", "-jar", "/app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT java -jar /app/spartan-0.0.1-SNAPSHOT.jar

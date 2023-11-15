@@ -7,18 +7,32 @@ FROM node:latest as build
 WORKDIR /usr/local/app
 
 # Copie de sources dans le repertoire
-COPY ./* /usr/local/app/
+#COPY ./* /usr/local/app/
 
-# Installation des dépendences
+# Copie des fichiers de dépendences
+COPY package*.json ./ 
+
+# Installation des dépendences, y compris Angular CLI
+RUN npm install -g @angular/cli
+
+# Installation des dépendences du projet
 RUN npm install
+
+# Copie du reste des fichiers
+COPY . .
+
+# Build de l'application
+RUN npm run build --prod
 
 
 # Etape 2 : Déploiement sur le serveur
-# FROM nginx:latest
+FROM nginx:latest
 
-# COPY --from=build /usr/local/app/dist/spartan-front /usr/share/nginx/html
+
+# Copie du répertoire de build depuis l'étape précédente
+COPY --from=build /usr/local/app/dist/spartan-front /usr/share/nginx/html
 
 # EXPOSE 80
-CMD ["ng", "serve"]
+CMD ["nginx", "-g", "daemon off;"]
 # docker build -t cours-docker:latest .
 # docker run -d -p 8080:80 cours-docker

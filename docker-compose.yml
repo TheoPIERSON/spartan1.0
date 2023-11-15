@@ -1,6 +1,22 @@
-version: "2.22"
+version: "2.2"
 
 services:
+  app-spartan-postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: app-spartan-postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    volumes:
+      - app-spartan-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "app-spartan-postgres", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
   frontend:
     image: spartan-frontend-image
     ports:
@@ -8,16 +24,18 @@ services:
     build:
       context: ./spartan-front
       dockerfile: dockerfile
+    depends_on:
+      - app-spartan-postgres
 
   backend:
     image: spartan-backend-image
     ports:
-      - "8080:80"
+      - "8081:8080"
     build:
       context: ./spartan-back
       dockerfile: dockerfile
+    depends_on:
+      - app-spartan-postgres
 
-  database:
-    image: postgres
-    ports:
-      - "5432:5432"
+volumes:
+  app-spartan-postgres-data:
