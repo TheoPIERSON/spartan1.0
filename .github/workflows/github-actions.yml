@@ -15,4 +15,3 @@ jobs:
       - name: install dependencies
         run: npm ci
       - uses: oke-py/npm-audit-action@v2
-        run: npm audit
