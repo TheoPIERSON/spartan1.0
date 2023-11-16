@@ -32,7 +32,8 @@ FROM nginx:latest
 # Copie du répertoire de build depuis l'étape précédente
 COPY --from=build /usr/local/app/dist/spartan-front /usr/share/nginx/html
 
-# EXPOSE 80
+EXPOSE 4200
+
 CMD ["nginx", "-g", "daemon off;"]
 # docker build -t cours-docker:latest .
 # docker run -d -p 8080:80 cours-docker

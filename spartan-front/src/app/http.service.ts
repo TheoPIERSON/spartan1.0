@@ -11,7 +11,7 @@ export class HttpService {
   // Méthode getHello qui retourne un Observable de type any
   getHello(): Observable<any> {
     // Effectue une requête HTTP GET vers l'URL spécifiée avec le type de réponse attendue 'text'
-    return this.http.get('http://localhost:8081/api/find/1', {
+    return this.http.get('http://localhost:8081/hello', {
       responseType: 'text',
     });
   }
