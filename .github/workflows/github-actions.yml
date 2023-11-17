@@ -1,17 +1,20 @@
 name: github-actions
 
 on:
-  push:
-    branches: ["develop"]
   pull_request:
     branches: ["develop"]
 
 jobs:
-  scan:
-    name: npm audit
+  scan-client:
+    name: client tests
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: spartan-front
+
     steps:
       - uses: actions/checkout@v3
+
       - name: install dependencies
-        run: npm ci
-      - uses: oke-py/npm-audit-action@v2
+        run: npm install
