@@ -1,39 +1,43 @@
 version: "2.2"
 
 services:
-  app-spartan-postgres:
+  app-spartan-postgres: # Nom du container de la BDD
     image: postgres:latest
     ports:
       - "5432:5432"
-    environment:
+    environment: # Adresse de la database
       POSTGRES_DB: app-spartan-postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
     volumes:
-      - app-spartan-postgres-data:/var/lib/postgresql/data
-    healthcheck:
+      - app-spartan-postgres-data:/var/lib/postgresql/data # Volume pour faire persister la data
+    healthcheck: # Interval pour lancer le reste du code 10s après la fin de la BDD
       test: ["CMD", "pg_isready", "-q", "-d", "app-spartan-postgres", "-U", "postgres"]
       interval: 10s
       timeout: 5s
       retries: 3
 
-  frontend:
+  frontend: # Nom du container du frontend
     image: spartan-frontend-image
     ports:
       - "4200:4200"
     build:
       context: ./spartan-front
       dockerfile: dockerfile
+    volumes:
+      - ./spartan-front:/usr/local/app # Montage du code source local dans le conteneur
     depends_on:
       - app-spartan-postgres
 
-  backend:
+  backend: # Nom du container du backend
     image: spartan-backend-image
     ports:
       - "8081:8081"
     build:
       context: ./spartan-back
       dockerfile: dockerfile
+    volumes:
+      - ./spartan-back:/usr/src/app # Montage du code source local dans le conteneur
     depends_on:
       - app-spartan-postgres
 

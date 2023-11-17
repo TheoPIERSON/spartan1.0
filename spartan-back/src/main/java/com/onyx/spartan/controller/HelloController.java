@@ -20,7 +20,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello From API ;)";
+        return "Hello From API ;D";
     }
 
     @GetMapping("/find/{id_customer}")
