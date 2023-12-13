@@ -1,7 +1,9 @@
 .search-list {
-  background-color: #ffb7d9;
+  background-color: transparent;
   margin: 0.7rem;
   margin-left: 17%;
-  padding: 1rem;
+  padding: 0.5rem;
   max-height: 100%;
+  border: 2.5px solid #e8e8e8;
+  border-radius: 10px;
 }

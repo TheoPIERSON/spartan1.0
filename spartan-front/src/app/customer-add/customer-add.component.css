@@ -2,12 +2,14 @@
   margin: 0%;
   padding: 0%;
   font-family: "Mirza", serif;
-  background-color: #fef4f9;
+  background-color: transparent;
 }
 
 form {
   margin-left: 16%;
   border-left: 0.5px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  background-color: rgba(118, 118, 118, 0.044);
 }
 
 h2 {
@@ -40,11 +42,10 @@ h2 {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
 }
+
+#add-appointment-btn,
 #add-customer-btn {
-  background-color: #d0ecab;
-}
-#add-appointment-btn {
-  background-color: #fc62aa;
+  background-color: #343434;
   color: white;
 }
 .input-btn {
