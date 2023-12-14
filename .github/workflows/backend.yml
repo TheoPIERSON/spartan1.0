@@ -1,0 +1,23 @@
+name: Backend Coaching
+
+on:
+  push:
+    branches:
+      - develop # Déclencher sur les pushs sur la branche main
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-back:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: "11"
+          distribution: "adopt"
