@@ -1,12 +1,14 @@
 name: Backend Spartan
 
 on:
-  push:
-    branches:
-      - develop # Déclencher sur les pushs sur la branche main
   pull_request:
-    branches:
-      - develop
+    branches: ["develop"]
+    # push:
+    #   branches:
+    #     - develop # Déclencher sur les pushs sur la branche main
+    # pull_request:
+    #   branches:
+    #     - develop
 
 jobs:
   build-back:
