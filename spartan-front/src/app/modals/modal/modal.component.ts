@@ -33,8 +33,6 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
     console.log('ID in modal:', this.customerIdService.getSelectedCustomerId());
     this.getCustomer();
-
-    console.log(this.selectedCustomer.id);
   }
 
   public getCustomer() {
@@ -48,8 +46,6 @@ export class ModalComponent implements OnInit {
         this.selectedCustomer.birthdate = res.birthdate;
 
         // Vous pouvez également mettre à jour d'autres propriétés si nécessaire
-        console.log(this.selectedCustomer.firstname);
-        console.log(this.selectedCustomer.lastname);
       },
       (error: HttpErrorResponse) => {
         console.error(error);

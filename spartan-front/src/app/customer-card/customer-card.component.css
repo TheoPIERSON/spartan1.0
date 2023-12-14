@@ -12,7 +12,7 @@
   background-color: transparent;
   border: 2.5px solid #e8e8e8;
 }
-.mat-mdc-raised-button:not(:disabled) {
+#edit-btn {
   background-color: transparent;
   box-shadow: none;
 }
