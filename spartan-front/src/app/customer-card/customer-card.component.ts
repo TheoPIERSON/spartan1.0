@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Customers } from '../customerModel';
 import { CustomerService } from '../core/services/customer.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../modals/modal/modal.component';
 import { Customer } from '../customerClass';
 import { CustomerIdService } from '../core/services/customer-id.service';
 import { first } from 'rxjs';
