@@ -1,38 +1,51 @@
-<form #addForm="ngForm" (ngSubmit)="onAddAppointment(addForm)">
+<form #addForm="ngForm" (ngSubmit)="onAddAppointment()">
   <h2>Nouveau rendez-vous</h2>
   <div class="form-row">
     <div class="data-field">
-      <label for="">Nom de la cliente :</label>
-      <select name="customer-name" id="" ngModel class="input-data">
+      <mat-label>Nom du client</mat-label>
+      <mat-select [(value)]="selectedCustomer" class="input-data">
+        <mat-option
+          class="value-data"
+          *ngFor="let customer of customers$ | async"
+          [value]="customer.id"
+        >
+          {{ customer.lastname }} {{ customer.firstname }}</mat-option
+        >
+      </mat-select>
+
+      <!-- <label for="">Nom du client :</label>
+      <select
+        name="customer-name"
+        id="customer-name"
+        ngModel="customerName"
+        class="input-data"
+      >
         <option
           *ngFor="let customer of customers$ | async"
           [value]="customer.lastname"
         >
           {{ customer.lastname }} {{ customer.firstname }}
         </option>
-      </select>
+      </select> -->
     </div>
     <div class="data-field">
-      <label for="">Type de rdv :</label>
-      <select name="rdv_type" id="type_select" ngModel class="input-data">
-        <option value="Semi permanent mains">Semi permanent mains</option>
-        <option value="Dépose + Pose semi">Dépose + Pose semi</option>
-        <option value="Dépose + Manucure">Dépose + Manucure</option>
-        <option value="Gainage + Semi">Gainage + Semi</option>
-        <option value="Remplissage Gainage">Remplissage Gainage</option>
-        <option value="Manucure">Manucure</option>
-      </select>
+      <mat-label>Type de prestation :</mat-label>
+      <mat-select [(value)]="prestation" class="input-data">
+        <mat-option>None</mat-option>
+        <mat-option value="bronzage simple">Bronzage simple</mat-option>
+        <mat-option value="bronzage protecteur">Bronzage protecteur</mat-option>
+      </mat-select>
     </div>
     <div class="data-field">
-      <label for="">Temps de prestation :</label>
-      <select name="rdv_type" id="type_select" ngModel class="input-data">
-        <option value="10 min">10</option>
-        <option value="20 min">20</option>
-        <option value="30 min">30</option>
-        <option value="40 min">40</option>
-        <option value="50 min">50</option>
-        <option value="60 min">60</option>
-      </select>
+      <mat-label>Temps de prestation :</mat-label>
+      <mat-select [(value)]="duration" class="input-data">
+        <mat-option value="10">10 min</mat-option>
+        <mat-option value="20">20 min</mat-option>
+        <mat-option value="30">30 min</mat-option>
+        <mat-option value="40">40 min</mat-option>
+        <mat-option value="50">50 min</mat-option>
+        <mat-option value="60">60 min</mat-option>
+      </mat-select>
     </div>
   </div>
 
@@ -44,11 +57,11 @@
         ngModel
         class="input-data"
         type="datetime-local"
-        required
         placeholder="exemple@onyx.com"
       />
     </div>
   </div>
+
   <div class="form-btn">
     <!-- [disabled]="addForm.invalid" -->
     <input

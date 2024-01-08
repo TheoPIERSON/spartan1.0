@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { ModalComponent } from './modals/modal/modal.component';
 import { CustomerIdService } from './core/services/customer-id.service';
@@ -74,6 +76,9 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+
     RouterLink,
     CalendarModule.forRoot({
       provide: DateAdapter,

@@ -16,34 +16,11 @@ import { Customer } from 'src/app/customerClass';
   styleUrls: ['./appointment-add.component.css'],
 })
 export class AppointmentAddComponent {
-  // search = new FormControl('');
-
-  // customers$: Observable<Customer[]> = combineLatest([
-  //   this.customerService.fetchCustomers(),
-  //   this.search.valueChanges.pipe(startWith('')),
-  // ]).pipe(
-  //   map(([customers, searchValue]) =>
-  //     customers.filter((customer) =>
-  //       this.customerMatchesSearch(customer, searchValue)
-  //     )
-  //   )
-  // );
-
-  // constructor(private customerService: CustomerService) {}
-
-  // private customerMatchesSearch(
-  //   customer: Customer,
-  //   searchValue: string | null
-  // ): boolean {
-  //   const lowerCaseSearch = (searchValue || '').toLowerCase(); // Utilisez une chaîne vide si searchValue est null
-  //   return (
-  //     customer.firstname.toLowerCase().includes(lowerCaseSearch) ||
-  //     customer.lastname.toLowerCase().includes(lowerCaseSearch)
-  //   );
-  // }
-
   customers$: Observable<Customer[]> = this.customerService.fetchCustomers();
   isSubmitted = false;
+  public selectedCustomer = '';
+  public prestation = '';
+  public duration = '';
 
   onPost = () => (this.isSubmitted = true);
 
@@ -61,17 +38,9 @@ export class AppointmentAddComponent {
     private appointmentService: AppointmentService
   ) {}
 
-  public onAddAppointment(addForm: NgForm): void {
+  public onAddAppointment(): void {
     document.getElementById('add-appointment-btn');
-    this.appointmentService.addAppointment(addForm.value).subscribe(
-      (response: Appointment) => {
-        console.log(response);
-        addForm.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      }
-    );
+    console.log(this.selectedCustomer);
+    console.log(this.duration);
   }
 }
