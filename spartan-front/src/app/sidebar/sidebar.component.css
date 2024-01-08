@@ -2,7 +2,7 @@
   width: 16%;
   background-color: transparent;
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   height: 100%;
   overflow: auto;
   border-right: 1px solid #e4e4e4;
@@ -41,4 +41,26 @@ li {
   margin-left: 1rem;
   border-bottom: 1px solid #e4e4e4;
   width: 85%;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+  width: 10rem;
+  border: 3px solid transparent;
+}
+
+.button:hover {
+  background-color: transparent;
+  border: 3px solid #e4e4e4;
+  border-radius: 10px;
+  color: black;
+}
+.active-link {
+  background-color: #343434;
+  color: white;
+  border-radius: 10px;
 }

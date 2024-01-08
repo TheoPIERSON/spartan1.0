@@ -1,18 +1,19 @@
 * {
   margin: 0%;
+  padding: 0%;
   font-family: "Mirza", serif;
+  background-color: #fef4f9;
 }
 
-#modal-content-wrapper {
-  padding: 1rem;
-  background: rgb(182, 255, 203);
-  background: linear-gradient(
-    137deg,
-    rgba(182, 255, 203, 0.506061799719888) 0%,
-    rgba(255, 253, 214, 0.39401698179271705) 35%,
-    rgba(182, 139, 255, 0.186734068627451) 65%,
-    rgba(121, 190, 255, 0.455641631652661) 100%
-  );
+form {
+  margin-left: 16%;
+  border-left: 0.5px solid #e4e4e4;
+}
+
+h2 {
+  font-weight: 500;
+  padding-left: 2rem;
+  padding-top: 1rem;
 }
 
 .input-data {
@@ -28,20 +29,25 @@
   margin-left: 3rem;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
-  padding-bottom: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 0.5rem;
+  justify-content: center;
 }
-.form-row-inline {
-  display: flex;
-  margin-left: 3rem;
-}
-
 .form-btn {
-  display: flex;
+  margin-left: 10rem;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
 }
-
+#add-customer-btn {
+  background-color: #d0ecab;
+}
+#add-appointment-btn {
+  background-color: #fc62aa;
+  color: white;
+}
 .input-btn {
-  border: none;
   font-size: 1rem;
   border-radius: 2rem;
   border-style: none;
@@ -49,8 +55,6 @@
   width: 12rem;
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  margin-left: 4rem;
+  margin-left: 6rem;
   margin-bottom: 0.5rem;
-  background-color: #343434;
-  color: white;
 }
