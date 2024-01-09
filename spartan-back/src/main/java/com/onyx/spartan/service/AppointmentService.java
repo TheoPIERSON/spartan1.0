@@ -15,6 +15,18 @@ public class AppointmentService {
     public Iterable<Appointment> getAllAppointments() {return appointmentRepository.findAll();
     }
 
+    public Appointment findAppointmentById(Long id){
+        return appointmentRepository.findAppointmentById(id);
+    }
+
     public Appointment addAppointment(Appointment appointment) {return appointmentRepository.save(appointment);
     }
+    public Appointment updateAppointment(Appointment appointment){
+        return appointmentRepository.save(appointment);
+    }
+
+    public void deleteAppointment(Long id){
+        appointmentRepository.deleteById(id);
+    }
+
 }

@@ -3,7 +3,6 @@ package com.onyx.spartan.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -11,7 +10,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_appointment", nullable = false, updatable = false)
-    private Long id_appointment;
+    private Long id;
     private Timestamp appointmentStartDate;
     private Timestamp appointmentEndDate;
 
@@ -19,22 +18,12 @@ public class Appointment {
     @JoinColumn(name = "id_customer")
     private Customers customer;
 
-    public Appointment() {
+    public Long getId() {
+        return id;
     }
 
-    public Appointment(Long id_appointment, Timestamp appointmentStartDate, Timestamp appointmentEndDate, Customers customer) {
-        this.id_appointment = id_appointment;
-        this.appointmentStartDate = appointmentStartDate;
-        this.appointmentEndDate = appointmentEndDate;
-        this.customer = customer;
-    }
-
-    public Long getId_appointment() {
-        return id_appointment;
-    }
-
-    public void setId_appointment(Long id_appointment) {
-        this.id_appointment = id_appointment;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Timestamp getAppointmentStartDate() {
