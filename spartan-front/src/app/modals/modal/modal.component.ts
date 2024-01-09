@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Customers } from '../../Models/customerModel';
 import { CustomerService } from '../../core/services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Customer } from '../../customerClass';
+import { Customer } from '../../core/classes/customerClass';
 import { CustomerIdService } from '../../core/services/customer-id.service';
 
 @Component({

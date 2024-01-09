@@ -1,9 +1,9 @@
-<form #addForm="ngForm" (ngSubmit)="onAddAppointment()">
+<!-- <form #addForm="ngForm" (ngSubmit)="onAddAppointment(addForm)">
   <h2>Nouveau rendez-vous</h2>
   <div class="form-row">
     <div class="data-field">
       <mat-label>Nom du client</mat-label>
-      <mat-select [(value)]="selectedCustomer" class="input-data">
+      <mat-select [(value)]="id" class="input-data">
         <mat-option
           class="value-data"
           *ngFor="let customer of customers$ | async"
@@ -13,7 +13,7 @@
         >
       </mat-select>
 
-      <!-- <label for="">Nom du client :</label>
+      <label for="">Nom du client :</label>
       <select
         name="customer-name"
         id="customer-name"
@@ -26,7 +26,7 @@
         >
           {{ customer.lastname }} {{ customer.firstname }}
         </option>
-      </select> -->
+      </select>
     </div>
     <div class="data-field">
       <mat-label>Type de prestation :</mat-label>
@@ -48,7 +48,7 @@
       </mat-select>
     </div>
   </div>
-
+    
   <div class="form-row">
     <div class="data-field">
       <label for="">Date du rendez-vous :</label>
@@ -61,13 +61,14 @@
       />
     </div>
   </div>
-  <div class="form-btn">
-    <!-- [disabled]="addForm.invalid" -->
-    <input
-      class="input-btn"
-      id="add-appointment-btn"
-      type="submit"
-      value="Ajouter le rendez-vous"
-    />
+    <div class="form-btn">
+      [disabled]="addForm.invalid"
+      <input
+        class="input-btn"
+        id="add-appointment-btn"
+        type="submit"
+        value="Ajouter le rendez-vous"
+      />
+    </div>
   </div>
-</form>
+</form> -->

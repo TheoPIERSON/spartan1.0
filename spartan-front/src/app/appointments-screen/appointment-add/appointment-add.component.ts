@@ -8,7 +8,6 @@ import { Appointment } from 'src/app/Models/appointmentModel';
 import { Customers } from 'src/app/Models/customerModel';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
-import { Customer } from 'src/app/customerClass';
 
 @Component({
   selector: 'app-appointment-add',
@@ -16,21 +15,8 @@ import { Customer } from 'src/app/customerClass';
   styleUrls: ['./appointment-add.component.css'],
 })
 export class AppointmentAddComponent {
-  customers$: Observable<Customer[]> = this.customerService.fetchCustomers();
-  isSubmitted = false;
-  public selectedCustomer = '';
-  public prestation = '';
-  public duration = '';
-
-  onPost = () => (this.isSubmitted = true);
-
-  frm!: FormGroup;
-
-  ngOnInit(): void {
-    this.frm = this.fb.group({
-      selectedCustomer: [],
-    });
-  }
+  customers$: Observable<Customers[]> = this.customerService.fetchCustomers();
+  public id = '';
 
   constructor(
     private fb: FormBuilder,
@@ -38,9 +24,18 @@ export class AppointmentAddComponent {
     private appointmentService: AppointmentService
   ) {}
 
-  public onAddAppointment(): void {
-    document.getElementById('add-appointment-btn');
-    console.log(this.selectedCustomer);
-    console.log(this.duration);
+  public onAddAppointment(addForm: NgForm): void {
+    console.log(this.id);
+
+    // this.appointmentService.addAppointment(addForm.value).subscribe(
+    //   (response: Appointment) => {
+    //     console.log(response);
+    //     addForm.reset();
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //     addForm.reset();
+    //   }
+    // );
   }
 }

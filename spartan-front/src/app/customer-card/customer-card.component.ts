@@ -4,9 +4,9 @@ import { Customers } from '../Models/customerModel';
 import { CustomerService } from '../core/services/customer.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../modals/modal/modal.component';
-import { Customer } from '../customerClass';
+import { Customer } from '../core/classes/customerClass';
 import { CustomerIdService } from '../core/services/customer-id.service';
-import { Observable, combineLatest, first, map, startWith } from 'rxjs';
+import { Observable, combineLatest, map, startWith } from 'rxjs';
 import { ModalDeleteComponent } from '../modals/modal-delete/modal-delete.component';
 import { FormBuilder } from '@angular/forms';
 
