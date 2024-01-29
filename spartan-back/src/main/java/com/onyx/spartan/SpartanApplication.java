@@ -9,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class SpartanApplication {
-public static void main(String[] args) {
-	SpringApplication.run(SpartanApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(SpartanApplication.class, args);
     }
 
     @Value("${allowed.origin}")
@@ -31,5 +31,3 @@ public static void main(String[] args) {
         };
     }
 }
-
-
