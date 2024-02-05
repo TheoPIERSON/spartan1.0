@@ -17,29 +17,29 @@ services:
       timeout: 5s
       retries: 3
 
-  frontend: # Nom du container du frontend
-    image: spartan-frontend-image
-    ports:
-      - "4200:4200"
-    build:
-      context: ./spartan-front
-      dockerfile: dockerfile
-    volumes:
-      - ./spartan-front:/usr/local/app # Montage du code source local dans le conteneur
-    depends_on:
-      - app-spartan-postgres
+  # frontend: # Nom du container du frontend
+  #   image: spartan-frontend-image
+  #   ports:
+  #     - "4200:4200"
+  #   build:
+  #     context: ./spartan-front
+  #     dockerfile: dockerfile
+  #   volumes:
+  #     - ./spartan-front:/usr/local/app # Montage du code source local dans le conteneur
+  #   depends_on:
+  #     - app-spartan-postgres
 
-  backend: # Nom du container du backend
-    image: spartan-backend-image
-    ports:
-      - "8081:8081"
-    build:
-      context: ./spartan-back
-      dockerfile: dockerfile
-    volumes:
-      - ./spartan-back:/usr/src/app # Montage du code source local dans le conteneur
-    depends_on:
-      - app-spartan-postgres
+  # backend: # Nom du container du backend
+  #   image: spartan-backend-image
+  #   ports:
+  #     - "8081:8081"
+  #   build:
+  #     context: ./spartan-back
+  #     dockerfile: dockerfile
+  #   volumes:
+  #     - ./spartan-back:/usr/src/app # Montage du code source local dans le conteneur
+  #   depends_on:
+  #     - app-spartan-postgres
 
 volumes:
   app-spartan-postgres-data:

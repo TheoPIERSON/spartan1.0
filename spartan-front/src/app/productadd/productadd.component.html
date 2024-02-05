@@ -1,0 +1,29 @@
+<div class="container">
+  <form [formGroup]="appointmentForm" (ngSubmit)="AddAppointment()">
+    <div>
+      <label for="">Date de debut</label>
+      <input type="datetime-local" formControlName="appointmentStartDate" />
+    </div>
+
+    <div>
+      <label for="">Customer</label>
+      <input formControlName="customer" />
+    </div>
+
+    <select
+      name="customer-name"
+      id=""
+      class="input-data"
+      formControlName="customer"
+    >
+      <option>theo</option>
+      <option>keira</option>
+      <option>margaux</option>
+      <option value="corinne">corinne</option>
+    </select>
+
+    <div>
+      <button type="submit">add appointment</button>
+    </div>
+  </form>
+</div>

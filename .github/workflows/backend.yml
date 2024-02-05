@@ -1,15 +1,14 @@
 name: Backend Spartan
 
 on:
-  pull_request:
-    branches: ["develop"]
-  # push:
-  #   branches:
-  #     - develop # Déclencher sur les pushs sur la branche main
+  #pull_request:
+  # branches: ["develop"]
+  push:
+    branches:
+      - develop # Déclencher sur les pushs sur la branche main
   # pull_request:
   #   branches:
   #     - develop
-
 jobs:
   build-back:
     runs-on: ubuntu-latest
@@ -23,3 +22,9 @@ jobs:
         with:
           java-version: "11"
           distribution: "adopt"
+
+      - name: Build with Maven
+        run: mvn clean install # Vous pouvez ajuster cette commande en fonction de votre configuration
+
+      - name: Run Tests
+        run: mvn test # Cette étape suppose que vos tests sont configurés dans votre projet Maven
