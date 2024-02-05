@@ -19,11 +19,10 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Set working directory
-        run: cd spartan-back # Se déplace dans le dossier du projet JAVA
-
       - name: Build with Maven
         run: mvn clean install # Lance l'application seule
+        working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
 
       - name: Run Tests
         run: mvn test # Lance les tests de l'application
+        working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
