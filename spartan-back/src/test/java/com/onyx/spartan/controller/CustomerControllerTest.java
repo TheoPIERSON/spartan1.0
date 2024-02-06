@@ -82,5 +82,4 @@ public class CustomerControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/1"))
                 .andExpect(status().isOk());
     }
-
 }
