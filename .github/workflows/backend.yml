@@ -3,9 +3,9 @@ name: Backend Spartan
 on:
   # pull_request:
   #   branches: ["develop"]
-  # push:
-  #   branches:
-  #     - develop
+  push:
+    branches:
+      - develop
 
 jobs:
   build-back:
