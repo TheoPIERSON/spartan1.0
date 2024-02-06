@@ -9,8 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,16 +17,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 public class CustomerControllerTest {
 
     @Mock
-    private CustomersRepository dao;
+    CustomersRepository dao;
 
     @InjectMocks
-    private CustomersService service;
+    CustomersService service;
 
     @Test
     void testFindAllCustomers() {
@@ -72,40 +69,72 @@ public class CustomerControllerTest {
 
     }
 
-//    @Test
-//    @DisplayName("Test de récupération d'un client par ID")
-//    public void testReadClient() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get("/customers/1"))
-//                .andExpect(status().isOk());
-//    }
+    @Test
+    void testFindCustomerById() {
+        // Création d'un customer fictif avec un ID donné
+        long customerId = 123;
+        Customers expectedCustomer = new Customers();
+        expectedCustomer.setId(customerId);
+        expectedCustomer.setFirstname("John");
+        expectedCustomer.setLastname("Cena");
 
-//    @Test
-//    @DisplayName("Test de mise à jour d'un client par ID")
-//    public void testUpdateClient() throws Exception {
-//        Customers customer = new Customers();
-//        customer.setId(999L);
-//        customer.setFirstname("test prenom ok");
-//        customer.setLastname("test nom ok");
-//        customer.setBirthdate(Date.valueOf("2000-01-01"));
-//        customer.setMail("test mail ok");
-//        customer.setPhoneNumber("07 07 07 07 07");
-//
-//        System.out.println(customer);
-//
-//        customer.setLastname("UpdatedLastName");
-//        customer.setFirstname("updateFirstName");
-//
-//        String updatedClientJson = objectMapper.writeValueAsString(customer);
-//        mockMvc.perform(MockMvcRequestBuilders.put("/customers/update/1")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(updatedClientJson))
-//                .andExpect(status().isOk());
-//
-//    }
-//    @Test
-//    @DisplayName("Test de suppression d'un client par ID")
-//    public void testDeleteCustomer() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.delete("/customers/delete/1"))
-//                .andExpect(status().isOk());
-//    }
+        // Configuration du mock pour retourner le customer fictif lorsque findCustomerById est appelé avec l'ID donné
+        when(dao.findCustomerById(customerId)).thenReturn(expectedCustomer);
+
+        // Appel de la méthode à tester avec l'ID fictif
+        Customers actualCustomer = service.findCustomerById(customerId);
+
+        // Vérification que le customer retourné correspond au customer attendu
+        assertNotNull(actualCustomer);
+        assertEquals(expectedCustomer.getId(), actualCustomer.getId());
+        assertEquals(expectedCustomer.getFirstname(), actualCustomer.getFirstname());
+        assertEquals(expectedCustomer.getLastname(), actualCustomer.getLastname());
+
+        // Vérification que la méthode du repository a été appelée exactement une fois avec l'ID donné
+        verify(dao, times(1)).findCustomerById(customerId);
+    }
+
+
+
+    @Test
+    @DisplayName("Test de mise à jour d'un client par ID")
+    public void testUpdateClient() throws Exception {
+        long customerId = 1L;
+        Customers customer = new Customers();
+        customer.setId(customerId);
+        customer.setFirstname("test prenom ok");
+        customer.setLastname("test nom ok");
+        customer.setBirthdate(Date.valueOf("2000-01-01"));
+        customer.setMail("test mail ok");
+        customer.setPhoneNumber("07 07 07 07 07");
+
+        // Mise à jour des détails du customer
+        customer.setFirstname("updateFirstName");
+        customer.setLastname("UpdatedLastName");
+
+        // Exécution de la mise à jour via le service
+        service.updateCustomer(customer);
+
+        // Vérification que la méthode de mise à jour du repository a été appelée exactement une fois avec le customer mis à jour
+        verify(dao, times(1)).save(customer);
+    }
+
+
+    @Test
+    @DisplayName("Test de suppression d'un client par ID")
+    public void testDeleteCustomer() throws Exception {
+        long customerId = 1L;
+        Customers customer = new Customers();
+        customer.setId(customerId);
+        customer.setFirstname("test prenom ok");
+        customer.setLastname("test nom ok");
+        customer.setBirthdate(Date.valueOf("2000-01-01"));
+        customer.setMail("test mail ok");
+        customer.setPhoneNumber("07 07 07 07 07");
+        service.deleteCustomer(customerId);
+
+        verify(dao, times(1)).deleteById(customerId);
+
+
+    }
 }
