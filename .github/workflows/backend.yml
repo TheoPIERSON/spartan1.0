@@ -27,7 +27,7 @@ jobs:
 
       #     ./mvn test
       - name: Run clean install
-        run: mvn mvn clean install -DskipTests # Lance les tests de l'application
+        run: mvn clean install -DskipTests # Lance les tests de l'application
         working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
 
 
