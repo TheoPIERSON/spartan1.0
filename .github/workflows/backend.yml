@@ -23,8 +23,8 @@ jobs:
 
       - name: Run clean install
         working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
-        run: mvn clean install # Lance les tests de l'application
-
+        run: |
+          mvn clean install
 
       # - name: Run Tests
       #   working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
