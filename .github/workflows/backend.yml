@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
 
       - name: Run clean install
         working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
