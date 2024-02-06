@@ -29,17 +29,17 @@ services:
   #   depends_on:
   #     - app-spartan-postgres
 
-  # backend: # Nom du container du backend
-  #   image: spartan-backend-image
-  #   ports:
-  #     - "8081:8081"
-  #   build:
-  #     context: ./spartan-back
-  #     dockerfile: dockerfile
-  #   volumes:
-  #     - ./spartan-back:/usr/src/app # Montage du code source local dans le conteneur
-  #   depends_on:
-  #     - app-spartan-postgres
+  backend: # Nom du container du backend
+    image: spartan-backend-image
+    ports:
+      - "8081:8081"
+    build:
+      context: ./spartan-back
+      dockerfile: dockerfile
+    volumes:
+      - ./spartan-back:/usr/src/app # Montage du code source local dans le conteneur
+    depends_on:
+      - app-spartan-postgres
 
 volumes:
   app-spartan-postgres-data:

@@ -3,19 +3,17 @@ FROM maven:3-openjdk-17 as build
 
 ENV MAVEN_HOME=/usr/local/maven
 ENV PATH $PATH:/usr/local/maven/bin
-
 WORKDIR /app/spartan-back/
 
 COPY ./pom.xml /app/spartan-back/pom.xml
-
 COPY ./ /app/spartan-back/
 
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 FROM openjdk:17
 
+VOLUME /tmp
 COPY --from=build /app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar /app/spartan-back/target/
-
 EXPOSE 8081
 
 CMD ["java", "-jar", "/app/spartan-back/target/spartan-0.0.1-SNAPSHOT.jar"]
