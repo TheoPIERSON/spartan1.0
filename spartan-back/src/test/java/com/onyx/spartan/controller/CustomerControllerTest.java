@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,22 +58,19 @@ public class CustomerControllerTest {
     }
 
 
-//    @Test
-//    void addCustomers() throws Exception {
-//        Customers customer = new Customers();
-//        customer.setFirstname("test prenom ok");
-//        customer.setLastname("test nom ok");
-//        customer.setBirthdate(Date.valueOf("2000-01-01"));
-//        customer.setMail("test mail ok");
-//        customer.setPhoneNumber("07 07 07 07 07");
-//
-//        String customerJson = objectMapper.writeValueAsString(customer);
-//
-//        mockMvc.perform(MockMvcRequestBuilders.post("/customers/add")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(customerJson))
-//                .andExpect(status().isCreated());
-//    }
+    @Test
+    void addCustomers() throws Exception {
+        Customers customer = new Customers();
+        customer.setFirstname("test prenom ok");
+        customer.setLastname("test nom ok");
+        customer.setBirthdate(Date.valueOf("2000-01-01"));
+        customer.setMail("test mail ok");
+        customer.setPhoneNumber("07 07 07 07 07");
+
+        service.addCustomer(customer);
+        verify(dao, times(1)).save(customer);
+
+    }
 
 //    @Test
 //    @DisplayName("Test de récupération d'un client par ID")
