@@ -21,22 +21,10 @@ jobs:
           java-version: "17"
           distribution: "adopt"
 
-      # - name: Build and test backend
-      #   run: |
-      #     cd /Users/theopierson/Sites/CDA/app-TP/spartan-back/src/main/java/com/onyx/spartan/controller/CustomersController.java
-
-      #     ./mvn test
-
-      - name: Set up environment variables
-        env:
-          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/app-spartan-postgres
-          SPRING_DATASOURCE_USERNAME: postgres
-          SPRING_DATASOURCE_PASSWORD: root
-
       - name: Run clean install
+        working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
         run: mvn clean install -DskipTests # Lance les tests de l'application
-        working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
 
       - name: Run Tests
+        working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
         run: mvn test # Lance les tests de l'application
-        working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
