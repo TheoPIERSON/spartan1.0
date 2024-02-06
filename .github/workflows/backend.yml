@@ -23,9 +23,9 @@ jobs:
 
       - name: Build and test backend
         run: |
-          cd /Users/theopierson/Sites/CDA/app-TP/spartan-back
-          ./mvn test
+          cd /Users/theopierson/Sites/CDA/app-TP/spartan-back/src/main/java/com/onyx/spartan/controller/CustomersController.java
 
+          ./mvn test
       # - name: Run Tests
       #   run: mvn test # Lance les tests de l'application
       #   working-directory: spartan-back # Se déplace dans le dossier du projet JAVA
