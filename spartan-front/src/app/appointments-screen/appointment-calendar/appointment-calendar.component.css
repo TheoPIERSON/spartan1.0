@@ -11,3 +11,8 @@
   display: flex;
   justify-content: space-around;
 }
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
