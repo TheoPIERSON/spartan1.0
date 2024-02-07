@@ -40,9 +40,7 @@ h2 {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
 }
-#add-customer-btn {
-  background-color: #d0ecab;
-}
+
 #add-appointment-btn {
   background-color: #343434;
   color: white;
@@ -57,4 +55,23 @@ h2 {
   padding-bottom: 0.5rem;
   margin-left: 6rem;
   margin-bottom: 0.5rem;
+}
+.searched-customer {
+  margin-left: 13%;
+  position: fixed;
+  top: 12%;
+  left: 13%;
+}
+.search-list {
+  background-color: #c7d4ff;
+  padding: 0.4rem;
+  border-bottom: 1px solid #e4e4e4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.search-list:hover {
+  background-color: #628efc;
+  cursor: pointer;
 }
