@@ -57,5 +57,6 @@ export class ModalDeleteComponent {
     this.customerService
       .deleteCustomer(this.selectedCustomer.id)
       .subscribe((res) => {});
+    window.location.reload();
   }
 }

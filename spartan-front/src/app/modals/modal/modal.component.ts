@@ -57,5 +57,6 @@ export class ModalComponent implements OnInit {
     this.customerService
       .updateCustomer(this.selectedCustomer)
       .subscribe((res) => {});
+    window.location.reload();
   }
 }

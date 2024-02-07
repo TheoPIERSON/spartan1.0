@@ -21,10 +21,12 @@ export class CustomerAddComponent {
       (response: Customers) => {
         console.log(response);
         addForm.reset();
+        window.location.reload();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
+        window.location.reload();
       }
     );
   }

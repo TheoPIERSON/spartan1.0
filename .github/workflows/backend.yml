@@ -19,13 +19,12 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "temurin"
+          distribution: "adopt"
 
-      - name: Run clean install
-        working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
-        run: |
-          mvn clean install
-
-      # - name: Run Tests
+      # - name: Run clean install
       #   working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
-      #   run: mvn test # Lance les tests de l'application
+      #   run: mvn clean install # Lance les tests de l'application
+
+      - name: Run Tests
+        working-directory: ./spartan-back # Se déplace dans le dossier du projet JAVA
+        run: mvn test # Lance les tests de l'application
