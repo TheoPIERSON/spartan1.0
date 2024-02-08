@@ -12,7 +12,9 @@
     <div>{{ appointment.appointmentStartDate }}</div>
     <div>{{ appointment.appointmentEndDate }}</div>
     <div>
-      <button><mat-icon>check_circle_outline</mat-icon></button>
+      <button mat-raised-button (click)="openModal()">
+        <mat-icon>check_circle_outline</mat-icon>
+      </button>
     </div>
   </div>
 </div>
