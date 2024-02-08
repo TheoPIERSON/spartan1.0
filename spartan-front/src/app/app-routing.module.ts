@@ -7,7 +7,7 @@ import { FakeloginComponent } from './fakelogin/fakelogin.component';
 export const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
   { path: 'appointments', component: AppointmentComponent },
-  { path: '', component: FakeloginComponent },
+  { path: '', component: FakeloginComponent, data: { displaySidebar: false } },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
