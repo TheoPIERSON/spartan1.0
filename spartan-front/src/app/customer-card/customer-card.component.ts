@@ -74,8 +74,6 @@ export class CustomerCardComponent implements OnInit {
   }
 
   onCardClick(id: number): void {
-    console.log('Customer ID to search:', id);
-
     this.customerService.findCustomerById(id).subscribe(
       (res: Customers) => {
         this.selectedCustomer = res;
@@ -89,7 +87,6 @@ export class CustomerCardComponent implements OnInit {
     );
   }
   onDeleteCardClick(id: number): void {
-    console.log('Customer ID to search:', id);
     this.customerService.findCustomerById(id).subscribe(
       (res: Customers) => {
         this.selectedCustomer = res;
