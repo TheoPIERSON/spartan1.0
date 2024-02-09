@@ -30,7 +30,7 @@ export class CustomerAddComponent {
         this.toast.success({
           detail: 'SUCCÈS !',
           summary: 'Le client à bien été ajouter à la base de données.',
-          duration: 1200,
+          duration: 2100,
         });
         this.refreshService.refreshComponent();
       },
