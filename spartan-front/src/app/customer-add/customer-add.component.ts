@@ -4,6 +4,8 @@ import { Customers } from '../Models/customerModel';
 import { CustomerService } from '../core/services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NgToastService } from 'ng-angular-popup';
+import { RefreshService } from '../core/services/refresh/refresh.service';
 
 @Component({
   selector: 'app-customer-add',
@@ -13,7 +15,11 @@ import { Observable } from 'rxjs';
 export class CustomerAddComponent {
   public customers: Customers[] = [];
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    private toast: NgToastService,
+    private refreshService: RefreshService
+  ) {}
 
   public onAddCustomer(addForm: NgForm): void {
     document.getElementById('add-customer-btn');
@@ -21,12 +27,16 @@ export class CustomerAddComponent {
       (response: Customers) => {
         console.log(response);
         addForm.reset();
-        window.location.reload();
+        this.toast.success({
+          detail: 'SUCCÈS !',
+          summary: 'Le client à bien été ajouter à la base de données.',
+          duration: 1200,
+        });
+        this.refreshService.refreshComponent();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         addForm.reset();
-        window.location.reload();
       }
     );
   }

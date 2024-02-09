@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomerIdService } from 'src/app/core/services/customer-id.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { Customer } from 'src/app/core/classes/customerClass';
 import { Customers } from 'src/app/Models/customerModel';
+import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-modal-delete',
@@ -27,7 +29,10 @@ export class ModalDeleteComponent {
   constructor(
     private customerService: CustomerService,
     public matDialog: MatDialog,
-    public customerIdService: CustomerIdService
+    public dialogRef: MatDialogRef<ModalDeleteComponent>, // Inject MatDialogRef
+    public customerIdService: CustomerIdService,
+    private refreshService: RefreshService,
+    private toast: NgToastService
   ) {}
 
   ngOnInit() {
@@ -54,9 +59,23 @@ export class ModalDeleteComponent {
   }
 
   public onUpdateCustomer() {
-    this.customerService
-      .deleteCustomer(this.selectedCustomer.id)
-      .subscribe((res) => {});
-    window.location.reload();
+    this.customerService.deleteCustomer(this.selectedCustomer.id).subscribe(
+      (res) => {
+        // Fermez la modal une fois la suppression terminée
+        this.dialogRef.close();
+        // Émettez un événement de rafraîchissement
+        this.refreshService.refreshComponent();
+      },
+      (error) => {
+        this.toast.error({
+          detail: 'ERREUR',
+          summary:
+            "Vous ne pouvez pas supprimer ce client, vérifiez qu'il ne soit pas associé à des rendez-vous.",
+          sticky: true,
+        });
+
+        console.error('Erreur lors de la suppression du client : ', error);
+      }
+    );
   }
 }

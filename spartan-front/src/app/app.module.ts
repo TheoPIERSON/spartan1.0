@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgToastModule } from 'ng-angular-popup';
 
 import { ModalComponent } from './modals/modal/modal.component';
 import { CustomerIdService } from './core/services/customer-id.service';
@@ -89,6 +90,7 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
       useFactory: adapterFactory,
     }),
     ReactiveFormsModule,
+    NgToastModule,
   ],
 
   providers: [
