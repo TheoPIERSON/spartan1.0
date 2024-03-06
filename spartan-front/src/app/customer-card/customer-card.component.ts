@@ -30,7 +30,7 @@ export class CustomerCardComponent implements OnInit {
     firstname: '',
     lastname: '',
     phoneNumber: '',
-    mail: '',
+    email: '',
     birthdate: '',
   });
 
