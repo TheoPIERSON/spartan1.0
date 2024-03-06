@@ -61,7 +61,7 @@ public class CustomerControllerTest {
         customer.setFirstname("test prenom ok");
         customer.setLastname("test nom ok");
         customer.setBirthdate(Date.valueOf("2000-01-01"));
-        customer.setMail("test mail ok");
+        customer.setEmail("test mail ok");
         customer.setPhoneNumber("07 07 07 07 07");
 
         service.addCustomer(customer);
@@ -105,7 +105,7 @@ public class CustomerControllerTest {
         customer.setFirstname("test prenom ok");
         customer.setLastname("test nom ok");
         customer.setBirthdate(Date.valueOf("2000-01-01"));
-        customer.setMail("test mail ok");
+        customer.setEmail("test mail ok");
         customer.setPhoneNumber("07 07 07 07 07");
 
         // Mise à jour des détails du customer
@@ -129,7 +129,7 @@ public class CustomerControllerTest {
         customer.setFirstname("test prenom ok");
         customer.setLastname("test nom ok");
         customer.setBirthdate(Date.valueOf("2000-01-01"));
-        customer.setMail("test mail ok");
+        customer.setEmail("test mail ok");
         customer.setPhoneNumber("07 07 07 07 07");
         service.deleteCustomer(customerId);
 
