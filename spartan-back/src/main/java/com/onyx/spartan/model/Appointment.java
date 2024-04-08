@@ -32,5 +32,5 @@ public class Appointment {
     @JoinTable(name = "payment",
             joinColumns = @JoinColumn(name = "id_appointment"),
             inverseJoinColumns = @JoinColumn(name = "id_type_payment"))
-    private Set<TypePayment> typePayment = new HashSet<>();
+    Set<TypePayment> typePayment;
 }

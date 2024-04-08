@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CustomerIdService {
-  private selectedCustomerId: number = 0;
+  private selectedCustomerId = 0;
 
   setSelectedCustomerId(id: number): void {
     this.selectedCustomerId = id;

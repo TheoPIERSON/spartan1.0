@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Customers } from '../Models/customerModel';
-import { CustomerService } from '../core/services/customer.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-customer',

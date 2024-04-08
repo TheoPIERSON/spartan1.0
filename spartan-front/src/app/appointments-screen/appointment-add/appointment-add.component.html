@@ -11,16 +11,7 @@
         formControlName="lastname"
       />
     </div>
-    <div class="data-field">
-      <label for="">Prenom :</label>
-      <input
-        class="input-data"
-        type="text"
-        required
-        placeholder="Prénom"
-        formControlName="firstname"
-      />
-    </div>
+
     <div class="data-field">
       <label for="start-date">Date de debut</label>
       <input
@@ -57,7 +48,10 @@
     id="main-container"
     *ngFor="let customer of customers$ | async"
     (click)="selectCustomer(customer)"
+    (keyup.enter)="selectCustomer(customer)"
+    tabindex="0"
   >
+    >
     <div class="search-list">
       {{ customer.lastname }} {{ customer.firstname }}
     </div>

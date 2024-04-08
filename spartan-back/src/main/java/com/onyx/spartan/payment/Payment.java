@@ -1,5 +1,6 @@
-package com.onyx.spartan.model;
+package com.onyx.spartan.payment;
 
+import com.onyx.spartan.model.Appointment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,5 @@ public class Payment {
     @JoinColumn(name = "id_appointment")
     private Appointment appointment;
 
-    @ManyToOne
-    @JoinColumn(name = "id_type_payment")
-    private TypePayment typePayment;
 
 }

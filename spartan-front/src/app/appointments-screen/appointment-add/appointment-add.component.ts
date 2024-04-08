@@ -47,21 +47,15 @@ export class AppointmentAddComponent {
   private getCustomers(): Observable<Customer[]> {
     const customers$ = this.customerService.fetchCustomers();
 
-    const search$ = combineLatest([
-      this.search.controls.firstname.valueChanges,
-      this.search.controls.lastname.valueChanges,
-    ]);
+    const search$ = combineLatest([this.search.controls.lastname.valueChanges]);
     return combineLatest([customers$, search$]).pipe(
-      map(([customers, [firstname, lastname]]) =>
+      map(([customers, [lastname]]) =>
         customers.filter((customer) => {
-          const isFirstnameMatching = customer.firstname
-            .toLowerCase()
-            .includes(firstname.toLowerCase());
           const isLastnameMatching = customer.lastname
             .toLowerCase()
             .includes(lastname.toLowerCase());
 
-          return isFirstnameMatching && isLastnameMatching;
+          return isLastnameMatching;
         })
       )
     );
@@ -70,9 +64,9 @@ export class AppointmentAddComponent {
   selectCustomer(customer: Customer): void {
     this.selectedCustomer = customer;
     this.search.patchValue({
-      firstname: customer.firstname,
       lastname: customer.lastname,
     });
+    console.log(customer.lastname);
   }
 
   //Ajoute le nouvel appointment dans la base de données

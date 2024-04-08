@@ -8,7 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'SpartanFrontend';
-  displaySidebar: boolean = true;
+  displaySidebar = true;
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {

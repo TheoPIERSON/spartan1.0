@@ -15,17 +15,11 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Table(name = "type_payment")
 public class TypePayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_type_payment", nullable = false, updatable = false)
     private Long id;
     private Timestamp description;
-
-    @ManyToMany
-    @JoinTable(name = "payment",
-            joinColumns = @JoinColumn(name = "id_appointment"),
-            inverseJoinColumns = @JoinColumn(name = "id_type_payment"))
-    private Set<TypePayment> typePayment = new HashSet<>();
 }
