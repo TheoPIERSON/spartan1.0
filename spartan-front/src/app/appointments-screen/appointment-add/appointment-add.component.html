@@ -20,6 +20,7 @@
         name="start-date"
         id="start-date"
         formControlName="startDate"
+        required
       />
     </div>
     <div class="data-field"></div>
@@ -32,6 +33,7 @@
         name="end-date"
         id="end-date"
         formControlName="endDate"
+        required
       />
     </div>
   </div>
@@ -41,6 +43,7 @@
     type="submit"
     value="Ajouter le rendez-vous"
     (click)="onAddAppointment()"
+    [disabled]="search.invalid"
   />
 </form>
 <div class="searched-customer">
@@ -57,4 +60,3 @@
     </div>
   </div>
 </div>
-<!-- <div class="searched-customer">theo Pierson</div> -->

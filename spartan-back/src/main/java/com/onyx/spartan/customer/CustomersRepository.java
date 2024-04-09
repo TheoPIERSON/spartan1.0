@@ -1,6 +1,5 @@
-package com.onyx.spartan.repository;
+package com.onyx.spartan.customer;
 
-import com.onyx.spartan.model.Customers;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

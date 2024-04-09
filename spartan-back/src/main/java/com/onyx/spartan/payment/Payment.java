@@ -1,13 +1,11 @@
 package com.onyx.spartan.payment;
 
-import com.onyx.spartan.model.Appointment;
+import com.onyx.spartan.appointment.Appointment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Timestamp;
 
 @Getter
 @Setter
@@ -20,11 +18,11 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_payment", nullable = false, updatable = false)
     private Long id;
+    @Column(name = "amount")
     private int amount;
-    private boolean status;
+    @Column(name = "status")
+    private boolean status = false;
     @ManyToOne
     @JoinColumn(name = "id_appointment")
     private Appointment appointment;
-
-
 }

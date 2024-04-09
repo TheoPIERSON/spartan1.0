@@ -1,9 +1,7 @@
-package com.onyx.spartan.controller;
+package com.onyx.spartan.type_payment;
 
-import com.onyx.spartan.model.TypePayment;
-import com.onyx.spartan.model.TypePayment;
-import com.onyx.spartan.service.TypePaymentService;
-import com.onyx.spartan.service.TypePaymentService;
+import com.onyx.spartan.type_payment.TypePayment;
+import com.onyx.spartan.type_payment.TypePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

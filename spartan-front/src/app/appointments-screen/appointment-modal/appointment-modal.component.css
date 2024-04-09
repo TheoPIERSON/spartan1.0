@@ -27,7 +27,7 @@
   margin-left: 1rem;
   display: grid;
   align-items: center;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 3rem;
 }
 
 .form-btn {

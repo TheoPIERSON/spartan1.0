@@ -1,8 +1,6 @@
-package com.onyx.spartan.controller;
+package com.onyx.spartan.appointment;
 
 
-import com.onyx.spartan.model.Appointment;
-import com.onyx.spartan.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +26,12 @@ public class AppointmentController {
         Appointment appointment = appointmentService.findAppointmentById(id_appointment);
         return new ResponseEntity<>(appointment, HttpStatus.OK);
     }
+
+    @GetMapping("/latest")
+    public ResponseEntity<Appointment> getLatestAppointment (){
+        Appointment appointment = appointmentService.findLatestAppointment();
+        return new ResponseEntity<>(appointment, HttpStatus.OK);
+    }
     @PostMapping("/add")
     public ResponseEntity<Appointment> addAppointment(@RequestBody Appointment appointment){
         Appointment newAppointment = appointmentService.addAppointment(appointment);
@@ -44,5 +48,15 @@ public class AppointmentController {
     public ResponseEntity<?> deleteAppointment(@PathVariable("id") Long id_appointment){
         appointmentService.deleteAppointment(id_appointment);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
+    @PutMapping("/{id_appointment}/type-payment/{id_type_payment}")
+    public Appointment assignPrestationToAppointment(
+            @PathVariable Long id_appointment,
+            @PathVariable Long id_type_payment
+    ){
+        return appointmentService.assignPaymentToAppointment(id_appointment,id_type_payment );
     }
 }

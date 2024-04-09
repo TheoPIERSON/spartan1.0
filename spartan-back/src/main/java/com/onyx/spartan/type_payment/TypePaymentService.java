@@ -1,7 +1,5 @@
-package com.onyx.spartan.service;
+package com.onyx.spartan.type_payment;
 
-import com.onyx.spartan.model.TypePayment;
-import com.onyx.spartan.repository.TypePaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

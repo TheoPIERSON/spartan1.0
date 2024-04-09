@@ -1,7 +1,5 @@
-package com.onyx.spartan.service;
+package com.onyx.spartan.customer;
 
-import com.onyx.spartan.model.Customers;
-import com.onyx.spartan.repository.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

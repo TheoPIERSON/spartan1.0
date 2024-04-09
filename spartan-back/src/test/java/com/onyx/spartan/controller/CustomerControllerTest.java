@@ -1,8 +1,8 @@
 package com.onyx.spartan.controller;
 
-import com.onyx.spartan.model.Customers;
-import com.onyx.spartan.repository.CustomersRepository;
-import com.onyx.spartan.service.CustomersService;
+import com.onyx.spartan.customer.Customers;
+import com.onyx.spartan.customer.CustomersRepository;
+import com.onyx.spartan.customer.CustomersService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

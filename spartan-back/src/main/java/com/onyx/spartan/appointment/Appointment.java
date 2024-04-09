@@ -1,6 +1,8 @@
-package com.onyx.spartan.model;
+package com.onyx.spartan.appointment;
 
 
+import com.onyx.spartan.customer.Customers;
+import com.onyx.spartan.type_payment.TypePayment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -26,11 +27,11 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "id_customer")
-    private Customers customer;
+    Customers customer;
 
     @ManyToMany
     @JoinTable(name = "payment",
             joinColumns = @JoinColumn(name = "id_appointment"),
             inverseJoinColumns = @JoinColumn(name = "id_type_payment"))
-    Set<TypePayment> typePayment;
+    Set<TypePayment> payment;
 }

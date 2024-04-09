@@ -1,7 +1,5 @@
-package com.onyx.spartan.controller;
+package com.onyx.spartan.customer;
 
-import com.onyx.spartan.model.Customers;
-import com.onyx.spartan.service.CustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

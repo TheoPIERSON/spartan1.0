@@ -1,6 +1,6 @@
-package com.onyx.spartan.repository;
+package com.onyx.spartan.appointment;
 
-import com.onyx.spartan.model.Appointment;
+import com.onyx.spartan.appointment.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

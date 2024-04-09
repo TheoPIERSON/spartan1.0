@@ -1,14 +1,10 @@
-package com.onyx.spartan.model;
+package com.onyx.spartan.type_payment;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -21,5 +17,5 @@ public class TypePayment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_type_payment", nullable = false, updatable = false)
     private Long id;
-    private Timestamp description;
+    private String description;
 }

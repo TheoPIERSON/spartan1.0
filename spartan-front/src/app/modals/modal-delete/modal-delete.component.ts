@@ -72,10 +72,14 @@ export class ModalDeleteComponent {
           summary:
             "Vous ne pouvez pas supprimer ce client, vérifiez qu'il ne soit pas associé à des rendez-vous.",
           sticky: true,
+          duration: 6100,
         });
 
         console.error('Erreur lors de la suppression du client : ', error);
       }
     );
+  }
+  public onCloseButton() {
+    this.dialogRef.close();
   }
 }

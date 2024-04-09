@@ -7,6 +7,8 @@
   <div class="form-btn">
     <input
       (click)="onUpdateCustomer()"
+      (keyup.enter)="onUpdateCustomer()"
+      tabindex="0"
       class="input-btn"
       id="delete-customer-btn-oui"
       type="submit"
@@ -14,6 +16,7 @@
     />
 
     <input
+      (click)="onCloseButton()"
       class="input-btn"
       id="delete-customer-btn-non"
       type="button"
