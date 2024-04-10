@@ -43,7 +43,11 @@
       class="searched-customer"
       *ngFor="let customer of customers$ | async"
     >
-      <button mat-raised-button (click)="onCardClick(customer.id)">
+      <button
+        class="edit-btn"
+        mat-raised-button
+        (click)="onCardClick(customer.id)"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1rem"

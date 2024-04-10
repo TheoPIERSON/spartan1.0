@@ -4,12 +4,15 @@
   font-family: "Mirza", serif;
 }
 .search-list {
-  background-color: transparent;
+  /* background-color: transparent; */
   margin: 0.7rem;
   margin-left: 17%;
   padding: 0.5rem;
   max-height: 100%;
-  border: 2.5px solid #e8e8e8;
+  /* border: 2.5px solid #e8e8e8; */
+  border-radius: 77px;
+  background: linear-gradient(145deg, #f0f0f09c, #cacaca24);
+  box-shadow: 3px 3px 5px #868686, -5px -5px 9px #f6f6f6cf;
   border-radius: 10px;
 }
 
@@ -23,13 +26,14 @@
   justify-content: space-around;
   padding: 1rem;
   margin-top: 0.5rem;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
   border-radius: 10px;
-  background-color: transparent;
-  border: 2.5px solid #e8e8e8;
-}
-#edit-btn {
-  background-color: transparent;
-  box-shadow: none;
+  /* background-color: transparent;
+  border: 2.5px solid #e8e8e8; */
+  background: linear-gradient(145deg, #f0f0f09c, #dadada24);
+  box-shadow: 3px 3px 3px #b2b2b2c1, -3px -3px 7px #ffffff;
+  border-radius: 10px;
 }
 
 .searched-customer div {
@@ -44,11 +48,14 @@ h2 {
 
 .input-data {
   background-color: white;
-  border: 1px solid #e4e4e4;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 2.6px;
   border-radius: 15px;
   display: inline-flex;
+  align-items: center;
   padding: 0.2rem;
   font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-row {
@@ -58,9 +65,17 @@ h2 {
   grid-template-columns: 1fr 1fr;
   padding-bottom: 1rem;
 }
-.separation {
-  margin-left: 1.5rem;
-  margin-top: 0.3rem;
-  border-bottom: 1px solid #e4e4e4;
-  width: 95%;
+
+.edit-btn {
+  width: 0.5rem;
+  border-radius: 20%;
+  background: linear-gradient(145deg, #ffffff, #d3d3d396);
+  box-shadow: 3px 3px 3px #d1d1d1, -3px -3px 3px #ffffff;
+}
+
+.delete-btn {
+  width: 0.5rem;
+  border-radius: 20%;
+  background: linear-gradient(145deg, #ffffff, #c0c0c096);
+  box-shadow: 3px 3px 3px #d1d1d1, -3px -3px 3px #ffffff;
 }

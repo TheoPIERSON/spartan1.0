@@ -14,13 +14,13 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: rgb(182, 255, 203);
+  background: rgba(182, 255, 203, 0.804);
   background: linear-gradient(
     137deg,
-    rgba(182, 255, 203, 0.506061799719888) 0%,
-    rgba(255, 253, 214, 0.39401698179271705) 35%,
-    rgba(182, 139, 255, 0.186734068627451) 65%,
-    rgba(121, 190, 255, 0.455641631652661) 100%
+    rgba(182, 255, 203, 0.4) 0%,
+    rgba(255, 253, 214, 0.3) 35%,
+    rgba(182, 139, 255, 0.1) 65%,
+    rgba(121, 190, 255, 0.3) 100%
   );
 }
 
