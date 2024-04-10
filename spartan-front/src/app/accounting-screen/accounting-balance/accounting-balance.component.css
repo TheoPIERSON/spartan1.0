@@ -1,0 +1,12 @@
+p {
+  /* background-color: transparent; */
+  margin: 0.7rem;
+  margin-left: 17%;
+  padding: 0.5rem;
+  max-height: 100%;
+  /* border: 2.5px solid #e8e8e8; */
+  border-radius: 77px;
+  background: linear-gradient(145deg, #f0f0f09c, #cacaca24);
+  box-shadow: 3px 3px 5px #868686, -5px -5px 9px #f6f6f6cf;
+  border-radius: 10px;
+}

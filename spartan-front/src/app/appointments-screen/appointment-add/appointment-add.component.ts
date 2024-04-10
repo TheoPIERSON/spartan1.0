@@ -10,6 +10,7 @@ import { Customers } from 'src/app/Models/customerModel';
 import { Customer } from 'src/app/core/classes/customerClass';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
 
 @Component({
   selector: 'app-appointment-add',
@@ -40,7 +41,8 @@ export class AppointmentAddComponent {
     private customerService: CustomerService,
     private appointmentService: AppointmentService,
     public matDialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private refreshService: RefreshService
   ) {}
 
   // Permet de chercher les customers avec la barre de recherche
@@ -91,6 +93,6 @@ export class AppointmentAddComponent {
     this.appointmentService
       .addAppointment(appointmentObj)
       .subscribe((response: Appointment) => {});
-    window.location.reload();
+    this.refreshService.refreshComponent();
   }
 }
