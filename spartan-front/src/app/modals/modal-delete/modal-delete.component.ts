@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomerIdService } from 'src/app/core/services/customer-id.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
@@ -13,10 +13,9 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './modal-delete.component.html',
   styleUrls: ['./modal-delete.component.css'],
 })
-export class ModalDeleteComponent {
+export class ModalDeleteComponent implements OnInit {
   public customers: Customers[] = [];
-  id: any;
-  data: any;
+
   selectedCustomer = new Customer({
     id: this.customerIdService.getSelectedCustomerId(),
     firstname: '',
@@ -60,7 +59,7 @@ export class ModalDeleteComponent {
 
   public onUpdateCustomer() {
     this.customerService.deleteCustomer(this.selectedCustomer.id).subscribe(
-      (res) => {
+      () => {
         // Fermez la modal une fois la suppression terminée
         this.dialogRef.close();
         // Émettez un événement de rafraîchissement

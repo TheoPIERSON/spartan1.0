@@ -1,10 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { add } from 'date-fns';
 import { Observable, combineLatest } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Appointment } from 'src/app/Models/appointmentModel';
 import { Customers } from 'src/app/Models/customerModel';
 import { Customer } from 'src/app/core/classes/customerClass';
@@ -90,9 +88,7 @@ export class AppointmentAddComponent {
         birthdate: this.selectedCustomer.birthdate,
       },
     };
-    this.appointmentService
-      .addAppointment(appointmentObj)
-      .subscribe((response: Appointment) => {});
+    this.appointmentService.addAppointment(appointmentObj).subscribe();
     this.refreshService.refreshComponent();
   }
 }

@@ -13,8 +13,7 @@ import { CustomerIdService } from '../../core/services/customer-id.service';
 })
 export class ModalComponent implements OnInit {
   public customers: Customers[] = [];
-  id: any;
-  data: any;
+
   selectedCustomer = new Customer({
     id: this.customerIdService.getSelectedCustomerId(),
     firstname: '',
@@ -54,9 +53,7 @@ export class ModalComponent implements OnInit {
   }
 
   public onUpdateCustomer() {
-    this.customerService
-      .updateCustomer(this.selectedCustomer)
-      .subscribe((res) => {});
+    this.customerService.updateCustomer(this.selectedCustomer).subscribe();
     window.location.reload();
   }
 }

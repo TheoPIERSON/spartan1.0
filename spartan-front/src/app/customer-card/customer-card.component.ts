@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Customers } from '../Models/customerModel';
 import { CustomerService } from '../core/services/customer.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { RefreshService } from '../core/services/refresh/refresh.service';
   templateUrl: './customer-card.component.html',
   styleUrls: ['./customer-card.component.css'],
 })
-export class CustomerCardComponent implements OnInit {
+export class CustomerCardComponent implements OnInit, OnDestroy {
   public customers: Customers[] = [];
 
   search = this.fb.nonNullable.group({

@@ -1,11 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CalendarEvent, CalendarView } from 'angular-calendar';
-import { isSameDay, isSameMonth } from 'date-fns';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/Models/appointmentModel';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
-import { ModalComponent } from 'src/app/modals/modal/modal.component';
 import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
 import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
 
@@ -14,7 +11,7 @@ import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
   templateUrl: './appointment-calendar.component.html',
   styleUrls: ['./appointment-calendar.component.css'],
 })
-export class AppointmentCalendarComponent {
+export class AppointmentCalendarComponent implements OnInit {
   appointment$: Observable<Appointment[]> =
     this.appointmentService.getAppointments();
 
