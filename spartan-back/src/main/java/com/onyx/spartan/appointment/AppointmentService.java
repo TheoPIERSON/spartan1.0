@@ -4,6 +4,7 @@ package com.onyx.spartan.appointment;
 import com.onyx.spartan.type_payment.TypePayment;
 import com.onyx.spartan.type_payment.TypePaymentRepository;
 import com.onyx.spartan.type_payment.TypePaymentService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Set;
 
+@AllArgsConstructor
 @Service
 public class AppointmentService {
 

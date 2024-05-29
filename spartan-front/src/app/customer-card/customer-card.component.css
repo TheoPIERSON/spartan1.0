@@ -11,13 +11,11 @@
   max-height: 100%;
   /* border: 2.5px solid #e8e8e8; */
   border-radius: 77px;
-  background: linear-gradient(145deg, #f0f0f09c, #cacaca24);
-  box-shadow: 3px 3px 5px #868686, -5px -5px 9px #f6f6f6cf;
-  border-radius: 10px;
+  border-radius: 1px;
 }
 
 .list-container {
-  height: 20rem;
+  height: 23rem;
   overflow-y: auto;
 }
 
@@ -25,15 +23,12 @@
   display: flex;
   justify-content: space-around;
   padding: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
-  border-radius: 10px;
   /* background-color: transparent;
   border: 2.5px solid #e8e8e8; */
-  background: linear-gradient(145deg, #f0f0f09c, #dadada24);
-  box-shadow: 3px 3px 3px #b2b2b2c1, -3px -3px 7px #ffffff;
-  border-radius: 10px;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .searched-customer div {
@@ -67,15 +62,11 @@ h2 {
 }
 
 .edit-btn {
-  width: 0.5rem;
-  border-radius: 20%;
-  background: linear-gradient(145deg, #ffffff, #d3d3d396);
-  box-shadow: 3px 3px 3px #d1d1d1, -3px -3px 3px #ffffff;
+  border-radius: 10%;
+  background: linear-gradient(145deg, #ffffff, #c0c0c063);
 }
 
 .delete-btn {
-  width: 0.5rem;
-  border-radius: 20%;
-  background: linear-gradient(145deg, #ffffff, #c0c0c096);
-  box-shadow: 3px 3px 3px #d1d1d1, -3px -3px 3px #ffffff;
+  border-radius: 10%;
+  background: linear-gradient(145deg, #ffffff, #c0c0c063);
 }

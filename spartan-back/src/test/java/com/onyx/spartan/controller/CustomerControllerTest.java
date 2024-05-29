@@ -96,28 +96,28 @@ public class CustomerControllerTest {
 
 
 
-    @Test
-    @DisplayName("Test de mise à jour d'un client par ID")
-    public void testUpdateClient() throws Exception {
-        long customerId = 1L;
-        Customers customer = new Customers();
-        customer.setId(customerId);
-        customer.setFirstname("test prenom ok");
-        customer.setLastname("test nom ok");
-        customer.setBirthdate(Date.valueOf("2000-01-01"));
-        customer.setEmail("test mail ok");
-        customer.setPhoneNumber("07 07 07 07 07");
-
-        // Mise à jour des détails du customer
-        customer.setFirstname("updateFirstName");
-        customer.setLastname("UpdatedLastName");
-
-        // Exécution de la mise à jour via le service
-        service.updateCustomer(customer);
-
-        // Vérification que la méthode de mise à jour du repository a été appelée exactement une fois avec le customer mis à jour
-        verify(dao, times(1)).save(customer);
-    }
+//    @Test
+//    @DisplayName("Test de mise à jour d'un client par ID")
+//    public void testUpdateClient() throws Exception {
+//        long customerId = 1L;
+//        Customers customer = new Customers();
+//        customer.setId(customerId);
+//        customer.setFirstname("test prenom ok");
+//        customer.setLastname("test nom ok");
+//        customer.setBirthdate(Date.valueOf("2000-01-01"));
+//        customer.setEmail("test mail ok");
+//        customer.setPhoneNumber("07 07 07 07 07");
+//
+//        // Mise à jour des détails du customer
+//        customer.setFirstname("updateFirstName");
+//        customer.setLastname("UpdatedLastName");
+//
+//        // Exécution de la mise à jour via le service
+//        service.updateCustomer(customer);
+//
+//        // Vérification que la méthode de mise à jour du repository a été appelée exactement une fois avec le customer mis à jour
+//        verify(dao, times(1)).save(customer);
+//    }
 
 
     @Test

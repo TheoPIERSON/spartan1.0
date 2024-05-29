@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ModalDeleteComponent } from './modal-delete.component';
 
@@ -8,7 +9,8 @@ describe('ModalDeleteComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalDeleteComponent]
+      declarations: [ModalDeleteComponent],
+      imports: [HttpClientModule], // Importer MatDialogModule dans le module de test
     });
     fixture = TestBed.createComponent(ModalDeleteComponent);
     component = fixture.componentInstance;
