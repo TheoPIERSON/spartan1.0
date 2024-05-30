@@ -1,6 +1,7 @@
 package com.onyx.spartan.payment;
 
 import com.onyx.spartan.appointment.Appointment;
+import com.onyx.spartan.type_payment.TypePayment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_payment", nullable = false, updatable = false)
     private Long id;
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = true)
     private int amount;
     @Column(name = "status")
     private boolean status = false;

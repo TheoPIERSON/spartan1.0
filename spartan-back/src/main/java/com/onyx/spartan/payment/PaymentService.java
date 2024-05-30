@@ -11,17 +11,4 @@ public class PaymentService {
     public Iterable<Payment> getAllPayments(){
         return paymentRepository.findAll();
     }
-    public Payment addPayment(Payment payment){
-        return paymentRepository.save(payment);
-    }
-    public Payment findById(Long id){
-        return paymentRepository.findPaymentById(id);
-    }
-
-    public Payment updatePayment(Payment payment){
-        return paymentRepository.save(payment);
-    }
-    public void deletePayment(Long id){
-        paymentRepository.deleteById(id);
-    }
 }
