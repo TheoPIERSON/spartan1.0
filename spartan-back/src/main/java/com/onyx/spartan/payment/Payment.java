@@ -26,4 +26,8 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "id_appointment")
     private Appointment appointment;
+    @ManyToOne
+    @JoinColumn(name = "id_type_payment", nullable = false)
+    private TypePayment typePayment;
+
 }

@@ -39,11 +39,11 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id_appointment}/type-payment/{id_type_payment}")
-    public Appointment assignPrestationToAppointment(
+    public ResponseEntity<Appointment> assignPaymentToAppointment(
             @PathVariable Long id_appointment,
-            @PathVariable Long id_type_payment
-
-    ){
-        return appointmentService.assignPaymentToAppointment(id_appointment,id_type_payment );
+            @PathVariable Long id_type_payment,
+            @RequestParam int amount) {
+        Appointment updatedAppointment = appointmentService.assignPaymentToAppointment(id_appointment, id_type_payment, amount);
+        return new ResponseEntity<>(updatedAppointment, HttpStatus.OK);
     }
 }
