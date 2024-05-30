@@ -33,16 +33,6 @@ public class AppointmentService {
 
     public Appointment addAppointment(Appointment appointment) {return appointmentRepository.save(appointment);
     }
-    public Appointment updateAppointment(Appointment appointment){
-        return appointmentRepository.save(appointment);
-    }
-
-    public void deleteAppointment(Long id){
-        appointmentRepository.deleteById(id);
-    }
-
-
-
     public Appointment assignPaymentToAppointment(Long idAppointment, Long idTypePayment) {
         Set<TypePayment> typePaymentSet = null;
         Appointment appointment = appointmentRepository.findAppointmentById(idAppointment);

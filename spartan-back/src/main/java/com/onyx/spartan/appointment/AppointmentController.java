@@ -38,24 +38,11 @@ public class AppointmentController {
         return new ResponseEntity<>(newAppointment, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Appointment> updateAppointment(@RequestBody Appointment appointment){
-        Appointment updateAppointment = appointmentService.updateAppointment(appointment);
-        return new ResponseEntity<>(updateAppointment, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteAppointment(@PathVariable("id") Long id_appointment){
-        appointmentService.deleteAppointment(id_appointment);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
-
     @PutMapping("/{id_appointment}/type-payment/{id_type_payment}")
     public Appointment assignPrestationToAppointment(
             @PathVariable Long id_appointment,
             @PathVariable Long id_type_payment
+
     ){
         return appointmentService.assignPaymentToAppointment(id_appointment,id_type_payment );
     }

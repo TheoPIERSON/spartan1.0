@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
     Appointment findAppointmentById(Long id);
-    void deleteById(Long id);
 }
