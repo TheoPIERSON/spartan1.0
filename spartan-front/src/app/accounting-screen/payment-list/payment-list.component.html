@@ -1,1 +1,16 @@
-<p>payment-list works!</p>
+<div class="container">
+  <h2>Trier les payments par :</h2>
+  <ul class="payment-button">
+    <li><button>Carte</button></li>
+    <li><button>Espèce</button></li>
+    <li><button>Carte et Espèce</button></li>
+    <li><button>Carte cadeaux</button></li>
+  </ul>
+  <div *ngFor="let payment of payment$ | async" class="payment-list">
+    <div class="card-data">{{ payment.appointment.customer.lastname }}</div>
+    <div class="card-data">{{ payment.typePayment.description }}</div>
+    <div class="card-data">{{ payment.amount }}</div>
+    <div class="card-data">{{ payment.appointment.appointmentStartDate }}</div>
+    <div class="card-data">{{ payment.status }}</div>
+  </div>
+</div>
