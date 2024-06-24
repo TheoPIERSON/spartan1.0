@@ -64,3 +64,34 @@ li {
   color: white;
   border-radius: 10px;
 }
+@media screen and (max-width: 700px) {
+  mat-icon {
+    padding-right: 30%;
+  }
+  .sidebar {
+    height: 4rem;
+    width: 100%;
+    bottom: 0%;
+  }
+
+  .button-text,
+  #accountability,
+  #stock,
+  #front-side,
+  .sidebar-logo,
+  h3 {
+    display: none;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    margin-right: 3%;
+    margin-left: 3%;
+    padding-left: 5%;
+  }
+  li {
+    padding-left: 3%;
+  }
+}

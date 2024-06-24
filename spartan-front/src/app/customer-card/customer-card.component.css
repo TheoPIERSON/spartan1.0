@@ -70,3 +70,33 @@ h2 {
   border-radius: 10%;
   background: linear-gradient(145deg, #ffffff, #c0c0c063);
 }
+@media screen and (max-width: 700px) {
+  .search-list {
+    margin: 0.7rem;
+    margin-left: 3%;
+    padding: 1rem;
+  }
+
+  h2 {
+    padding-left: 0rem;
+    padding-top: 0rem;
+  }
+  .form-row {
+    margin-left: 0.5rem;
+  }
+  #edit-button,
+  #delete-button {
+    display: none;
+  }
+  .searched-customer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+  }
+  .list-container {
+    height: 17rem;
+    overflow-y: auto;
+  }
+}

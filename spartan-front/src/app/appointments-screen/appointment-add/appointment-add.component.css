@@ -78,3 +78,20 @@ h2 {
   background-color: #628efc;
   cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+  h2 {
+    padding-left: 1rem;
+  }
+  form {
+    margin-left: 0%;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-left: 2rem;
+  }
+  .input-btn {
+    width: 10rem;
+    margin-left: 1.5rem;
+  }
+}
