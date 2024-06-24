@@ -40,6 +40,7 @@ import { FakeloginComponent } from './fakelogin/fakelogin.component';
 import { AppointmentModalComponent } from './appointments-screen/appointment-modal/appointment-modal.component';
 import { AccountingComponent } from './accounting-screen/accounting/accounting.component';
 import { AccountingBalanceComponent } from './accounting-screen/accounting-balance/accounting-balance.component';
+import { PaymentListComponent } from './accounting-screen/payment-list/payment-list.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -73,6 +74,7 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     AppointmentModalComponent,
     AccountingComponent,
     AccountingBalanceComponent,
+    PaymentListComponent,
   ],
   imports: [
     BrowserModule,
