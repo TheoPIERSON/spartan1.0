@@ -7,12 +7,12 @@
     <h2>Status</h2>
   </div>
 
-  <div *ngFor="let appointment of appointment$ | async" class="item-list">
-    <div>{{ appointment.customer.firstname }}</div>
-    <div>{{ appointment.customer.lastname }}</div>
-    <div>{{ appointment.appointmentStartDate }}</div>
-    <div>{{ appointment.appointmentEndDate }}</div>
-    <div>
+  <div *ngFor="let appointment of appointment$ | async" class="data-list">
+    <div class="card-data">{{ appointment.customer.firstname }}</div>
+    <div class="card-data">{{ appointment.customer.lastname }}</div>
+    <div class="card-data">{{ appointment.appointmentStartDate }}</div>
+    <div class="card-data">{{ appointment.appointmentEndDate }}</div>
+    <div class="card-data">
       <button mat-raised-button (click)="openModal()">
         <mat-icon>check_circle_outline</mat-icon>
       </button>

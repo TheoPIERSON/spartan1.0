@@ -44,6 +44,7 @@
       *ngFor="let customer of customers$ | async"
     >
       <button
+        id="edit-button"
         class="edit-btn"
         mat-raised-button
         (click)="onCardClick(customer.id)"
@@ -63,6 +64,7 @@
       <div>{{ customer.phoneNumber }}</div>
       <div>Prochain rdv le :</div>
       <button
+        id="delete-button"
         class="delete-btn"
         mat-raised-button
         (click)="onDeleteCardClick(customer.id)"
