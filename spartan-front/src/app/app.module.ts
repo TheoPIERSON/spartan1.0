@@ -87,7 +87,6 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     MatIconModule,
     MatSelectModule,
     MatAutocompleteModule,
-
     RouterLink,
     CalendarModule.forRoot({
       provide: DateAdapter,

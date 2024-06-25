@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppointmentComponent } from './appointment.component';
-import { AppointmentAddComponent } from '../appointment-add/appointment-add.component';
+import { TestAppointmentAddModule } from '../appointment-add/test-appointment-add.module';
+import { AppointmentCalendarComponent } from '../appointment-calendar/appointment-calendar.component';
 
 describe('AppointmentComponent', () => {
   let component: AppointmentComponent;
@@ -8,8 +9,8 @@ describe('AppointmentComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppointmentComponent],
-      imports: [AppointmentAddComponent],
+      declarations: [AppointmentComponent, AppointmentCalendarComponent],
+      imports: [TestAppointmentAddModule],
     });
     fixture = TestBed.createComponent(AppointmentComponent);
     component = fixture.componentInstance;
