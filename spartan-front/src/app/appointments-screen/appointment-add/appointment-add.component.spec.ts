@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importez ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppointmentAddComponent } from './appointment-add.component';
+import { TestAppointmentAddModule } from './test-appointment-add.module'; // Importez votre module de test
 
 describe('AppointmentAddComponent', () => {
   let component: AppointmentAddComponent;
@@ -11,12 +12,11 @@ describe('AppointmentAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppointmentAddComponent],
       imports: [
         HttpClientModule,
         MatDialogModule,
-        FormsModule,
-        ReactiveFormsModule, // Ajoutez ReactiveFormsModule ici
+        ReactiveFormsModule,
+        TestAppointmentAddModule, // Utilisez votre module de test ici
       ],
     }).compileComponents();
   });

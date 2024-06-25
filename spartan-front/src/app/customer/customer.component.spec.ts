@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material/dialog'; // Importez MatDialogModule
+import { MatDialogModule } from '@angular/material/dialog';
 import { CustomerComponent } from './customer.component';
 import { CustomerAddComponent } from '../customer-add/customer-add.component';
 import { CustomerCardComponent } from '../customer-card/customer-card.component';
+import { FormsModule } from '@angular/forms'; // Assurez-vous d'importer FormsModule ici
 
 describe('CustomerComponent', () => {
   let component: CustomerComponent;
@@ -18,7 +19,8 @@ describe('CustomerComponent', () => {
       ],
       imports: [
         HttpClientModule,
-        MatDialogModule, // Ajoutez MatDialogModule ici
+        MatDialogModule,
+        FormsModule, // Importez FormsModule ici
       ],
     });
     fixture = TestBed.createComponent(CustomerComponent);

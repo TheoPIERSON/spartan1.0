@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http'; // Importer HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'; // Importez NoopAnimationsModule ou BrowserAnimationsModule si nécessaire
 
 import { AppointmentCalendarComponent } from './appointment-calendar.component';
-import { MatDialog } from '@angular/material/dialog';
 
 describe('AppointmentCalendarComponent', () => {
   let component: AppointmentCalendarComponent;
@@ -11,8 +12,12 @@ describe('AppointmentCalendarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppointmentCalendarComponent],
-      imports: [HttpClientModule], // Importer HttpClientModule dans le module de test
-      providers: [MatDialog],
+      imports: [
+        HttpClientModule,
+        MatDialogModule,
+        NoopAnimationsModule, // Assurez-vous d'importer NoopAnimationsModule ou BrowserAnimationsModule ici
+      ],
+      providers: [MatDialog], // Fournir MatDialog comme un fournisseur
     }).compileComponents();
   });
 
