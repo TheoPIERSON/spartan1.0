@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http'; // Importer HttpClientModule
 
 import { AppointmentCalendarComponent } from './appointment-calendar.component';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('AppointmentCalendarComponent', () => {
   let component: AppointmentCalendarComponent;
@@ -11,6 +12,7 @@ describe('AppointmentCalendarComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppointmentCalendarComponent],
       imports: [HttpClientModule], // Importer HttpClientModule dans le module de test
+      providers: [MatDialog],
     }).compileComponents();
   });
 

@@ -7,7 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'SpartanFrontend';
+  title = 'Spartan';
   displaySidebar = true;
 
   constructor(private router: Router) {
