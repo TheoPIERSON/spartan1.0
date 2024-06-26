@@ -1,15 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Customers } from '../Models/customerModel';
-import { CustomerService } from '../core/services/customer.service';
+import { Customers } from '../../../Models/customerModel';
+import { CustomerService } from '../../../core/services/customer.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModalComponent } from '../modals/modal/modal.component';
-import { Customer } from '../core/classes/customerClass';
-import { CustomerIdService } from '../core/services/customer-id.service';
+import { ModalComponent } from '../../../components/modals/modal/modal.component';
+import { Customer } from '../../../core/classes/customerClass';
+import { CustomerIdService } from '../../../core/services/customer-id.service';
 import { Observable, combineLatest, map, startWith } from 'rxjs';
-import { ModalDeleteComponent } from '../modals/modal-delete/modal-delete.component';
+import { ModalDeleteComponent } from '../../../components/modals/modal-delete/modal-delete.component';
 import { FormBuilder } from '@angular/forms';
-import { RefreshService } from '../core/services/refresh/refresh.service';
+import { RefreshService } from '../../../core/services/refresh/refresh.service';
 
 @Component({
   selector: 'app-customer-card',

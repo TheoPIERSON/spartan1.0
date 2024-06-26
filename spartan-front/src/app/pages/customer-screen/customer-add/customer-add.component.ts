@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Customers } from '../Models/customerModel';
-import { CustomerService } from '../core/services/customer.service';
+import { Customers } from '../../../Models/customerModel';
+import { CustomerService } from '../../../core/services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
-import { RefreshService } from '../core/services/refresh/refresh.service';
+import { RefreshService } from '../../../core/services/refresh/refresh.service';
 
 @Component({
   selector: 'app-customer-add',

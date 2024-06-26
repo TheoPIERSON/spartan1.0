@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Customers } from '../../Models/customerModel';
-import { CustomerService } from '../../core/services/customer.service';
+import { Customers } from '../../../Models/customerModel';
+import { CustomerService } from '../../../core/services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Customer } from '../../core/classes/customerClass';
-import { CustomerIdService } from '../../core/services/customer-id.service';
+import { Customer } from '../../../core/classes/customerClass';
+import { CustomerIdService } from '../../../core/services/customer-id.service';
 
 @Component({
   selector: 'app-modal',
