@@ -36,11 +36,11 @@ import { AppointmentCalendarComponent } from './pages/appointments-screen/appoin
 
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
-import { FakeloginComponent } from './pages/fakelogin/fakelogin.component';
 import { AppointmentModalComponent } from './pages/appointments-screen/appointment-modal/appointment-modal.component';
 import { AccountingComponent } from './pages/accounting-screen/accounting/accounting.component';
 import { AccountingBalanceComponent } from './pages/accounting-screen/accounting-balance/accounting-balance.component';
 import { PaymentListComponent } from './pages/accounting-screen/payment-list/payment-list.component';
+import { LoginComponent } from './pages/login/login.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -70,11 +70,11 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     AppointmentComponent,
     AppointmentAddComponent,
     AppointmentCalendarComponent,
-    FakeloginComponent,
     AppointmentModalComponent,
     AccountingComponent,
     AccountingBalanceComponent,
     PaymentListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
