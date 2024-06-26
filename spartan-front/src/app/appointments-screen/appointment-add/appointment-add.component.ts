@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NgToastService } from 'ng-angular-popup';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Appointment } from 'src/app/Models/appointmentModel';
@@ -40,7 +41,8 @@ export class AppointmentAddComponent {
     private appointmentService: AppointmentService,
     public matDialog: MatDialog,
     private fb: FormBuilder,
-    private refreshService: RefreshService
+    private refreshService: RefreshService,
+    private toast: NgToastService
   ) {}
 
   // Permet de chercher les customers avec la barre de recherche
@@ -88,6 +90,11 @@ export class AppointmentAddComponent {
         birthdate: this.selectedCustomer.birthdate,
       },
     };
+    this.toast.success({
+      detail: 'SUCCÈS !',
+      summary: 'Le client à bien été ajouter à la base de données.',
+      duration: 2100,
+    });
     this.appointmentService.addAppointment(appointmentObj).subscribe();
     this.refreshService.refreshComponent();
   }

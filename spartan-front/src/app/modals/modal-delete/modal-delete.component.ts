@@ -70,7 +70,6 @@ export class ModalDeleteComponent implements OnInit {
           detail: 'ERREUR',
           summary:
             "Vous ne pouvez pas supprimer ce client, vérifiez qu'il ne soit pas associé à des rendez-vous.",
-          sticky: true,
           duration: 6100,
         });
 

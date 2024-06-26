@@ -4,16 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { AppointmentAddComponent } from './appointment-add.component';
-
 @NgModule({
-  declarations: [AppointmentAddComponent],
+  declarations: [],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
   ],
-  exports: [AppointmentAddComponent],
+  exports: [],
 })
 export class TestAppointmentAddModule {}
