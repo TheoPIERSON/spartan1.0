@@ -5,7 +5,7 @@ import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './pages/customer-screen/customer/customer.component';
 import { CustomerService } from './core/services/customer.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CustomerCardComponent } from './pages/customer-screen/customer-card/customer-card.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CustomerAddComponent } from './pages/customer-screen/customer-add/customer-add.component';
@@ -41,6 +41,7 @@ import { AccountingComponent } from './pages/accounting-screen/accounting/accoun
 import { AccountingBalanceComponent } from './pages/accounting-screen/accounting-balance/accounting-balance.component';
 import { PaymentListComponent } from './pages/accounting-screen/payment-list/payment-list.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthInterceptorService } from './core/interceptor/auth-interceptor.service';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -99,6 +100,11 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
   providers: [
     CustomerService,
     CustomerIdService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
     provideRouter(routes),
     [{ provide: CalendarDateFormatter, useClass: CustomeDateFormatter }],
   ],

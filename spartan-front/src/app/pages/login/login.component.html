@@ -1,16 +1,29 @@
 <div class="container">
-  <form>
+  <form (ngSubmit)="login(username.value, password.value)">
     <h3>Connectez-vous ici</h3>
-    <label for="username">Votre Username</label>
-    <input type="text" placeholder="Email" id="username" />
-
+    <label for="username">Votre email</label>
+    <input type="email" #username required placeholder="Email" id="username" />
     <label for="password">Mot de passe</label>
-    <input type="password" placeholder="Password" id="password" />
+    <div class="password-container">
+      <input
+        #password
+        name="password"
+        class="input-data"
+        ngModel
+        [type]="passwordFieldType"
+        placeholder="Mot de passe"
+        id="password"
+        required
+      />
+      <button type="button" (click)="togglePasswordVisibility()">
+        {{ passwordFieldType === "password" ? "👁️" : "🕳️" }}
+      </button>
+    </div>
 
     <div class="button">
-      <a routerLink="customers" routerLinkActive="active-link"
-        ><span>Se connecter</span></a
-      >
+      <button class="connect-btn" type="submit">
+        <span>Se connecter</span>
+      </button>
     </div>
   </form>
 </div>

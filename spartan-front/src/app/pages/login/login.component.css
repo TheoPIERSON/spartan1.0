@@ -51,7 +51,7 @@ input:focus {
   align-items: center;
   padding: 1rem;
 }
-a {
+.connect-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,9 +62,26 @@ a {
   border: 3px solid transparent;
   border-radius: 5px;
 }
-a span {
+.connect-btn span {
   color: aliceblue;
 }
-a:hover {
+.connect-btn:hover {
   background-color: #606060;
+}
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-container button {
+  margin-left: 10px;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

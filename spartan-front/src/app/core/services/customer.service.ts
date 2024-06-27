@@ -22,6 +22,18 @@ export class CustomerService {
     );
   }
 
+  public connectCustomer(
+    username: string,
+    password: string
+  ): Observable<{ bearer: string }> {
+    const credentials = { username, password };
+
+    return this.http.post<{ bearer: string }>(
+      `${this.apiServerUrl}/users/connexion`,
+      credentials
+    );
+  }
+
   // public updateCustomer(customer: Customers): Observable<Customers> {
   //   return this.http.put<Customers>(
   //     `${this.apiServerUrl}/customers/update`,
