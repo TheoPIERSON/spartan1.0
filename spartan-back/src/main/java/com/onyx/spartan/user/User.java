@@ -1,4 +1,4 @@
-package com.onyx.spartan.customer;
+package com.onyx.spartan.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Customers {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +21,6 @@ public class Customers {
     private Long id;
     private String firstname;
     private String lastname;
-    private String phoneNumber;
     private String email;
-    private Date birthdate;
-
+    private String password;
 }
