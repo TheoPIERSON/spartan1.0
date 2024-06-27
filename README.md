@@ -1,8 +1,6 @@
 # app-TP
-
-### Ce repo contient une application Java SpringBoot pour le backend et Angular pour le frontend et qui permet simplement de renvoyer un message depuis une api
-
-
+# Spartan
+### Ce projet construit en Springboot/Angular avec une base de données Postgres est un petit logiciel de gestion de chiffre d'affaire pour très petite entreprise.
 
 ## Création du repo et choix du workflow
 
@@ -10,5 +8,6 @@
 - develop
 - test
 - us
+
 
 
