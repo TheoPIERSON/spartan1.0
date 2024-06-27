@@ -28,7 +28,7 @@ public class Users implements UserDetails {
     private String email;
     private String password;
     private boolean active = false;
-    private String role = "admin";
+    private String role = "ADMIN";
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+this.role));

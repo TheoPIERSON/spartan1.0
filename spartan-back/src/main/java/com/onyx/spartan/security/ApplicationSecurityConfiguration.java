@@ -32,11 +32,9 @@ public class ApplicationSecurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET, "/appointment/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/type_prestation/all").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/activate").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/connexion").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/add").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users/connexion").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users/add").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/users/activate").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
