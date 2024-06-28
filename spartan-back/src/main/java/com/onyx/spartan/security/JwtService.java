@@ -66,11 +66,17 @@ public class JwtService {
         return Map.of("Bearer", bearer);
     }
 
-
-
     private Key getKey() {
         final byte[] decoder = Decoders.BASE64.decode(ENCRYPTION_KEY);
         return Keys.hmacShaKeyFor(decoder);
+    }
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(getKey()).build().parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
 
