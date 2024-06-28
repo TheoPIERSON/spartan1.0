@@ -20,7 +20,7 @@ import java.util.function.Function;
 @AllArgsConstructor
 @Service
 public class JwtService {
-    private final String ENCRYPTION_KEY = "8MPbKZPYhcw8r8VSrB3KJD3ysLCZAwUFbhD0eGAfYtVnhq+K6fvGbtdgqNlFVjL4";
+    private final String ENCRYPTION_KEY = "3+2jJx5Hqrj4JRe4EJWFXX86BHyWFAOw9Olu6x/OfKYsrcbonnLTO8B5XDBaXXqP";
     private UserService userService;
     public Map<String, String> generate(String username){
         Users users = (Users) this.userService.loadUserByUsername(username);
@@ -63,7 +63,7 @@ public class JwtService {
                 .addClaims(claims) // Utiliser addClaims() pour inclure les revendications
                 .signWith(getKey(), SignatureAlgorithm.HS256)
                 .compact();
-        return Map.of("bearer", bearer);
+        return Map.of("Bearer", bearer);
     }
 
 
