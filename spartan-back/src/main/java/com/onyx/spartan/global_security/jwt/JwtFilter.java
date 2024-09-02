@@ -1,9 +1,8 @@
-package com.onyx.spartan.security;
+package com.onyx.spartan.global_security.jwt;
 
-import com.onyx.spartan.user.UserService;
+import com.onyx.spartan.customer.CustomersService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,46 +14,42 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Service
+
 public class JwtFilter extends OncePerRequestFilter {
 
-    private UserService userService;
+    private CustomersService customersService;
     private JwtService jwtService;
 
-    public JwtFilter(UserService userService, JwtService jwtService) {
-        this.userService = userService;
+    public JwtFilter(CustomersService customersService, JwtService jwtService) {
+        this.customersService = customersService;
         this.jwtService = jwtService;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = null;
+        Jwt tokenInDatabase = null;
         String username = null;
         boolean isTokenExpired = true;
 
-        // Récupérer les cookies de la requête
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("bearer")) {
-                    token = cookie.getValue();
-                }
-            }
-        }
-
-        // Vérifier le token s'il a été trouvé
-        if (token != null) {
+        final String authorization = request.getHeader("Authorization");
+        if (authorization != null && authorization.startsWith("Bearer ")) {
+            token = authorization.substring(7);
+            tokenInDatabase = this.jwtService.tokenByValue(token);
+            this.jwtService.tokenByValue(token);
             isTokenExpired = jwtService.isTokenExpired(token);
             username = jwtService.readUsername(token);
         }
 
-        // Si le token est valide et que l'utilisateur n'est pas déjà authentifié
-        if (!isTokenExpired && username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userService.loadUserByUsername(username);
+        if (!isTokenExpired
+                && tokenInDatabase.getCustomers().getEmail().equals(username)
+                && SecurityContextHolder.getContext().getAuthentication() == null
+        ) {
+            UserDetails userDetails = customersService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
 
-        // Continuer le traitement de la requête
         filterChain.doFilter(request, response);
     }
 }

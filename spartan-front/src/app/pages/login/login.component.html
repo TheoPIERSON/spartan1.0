@@ -3,6 +3,9 @@
     <h3>Connectez-vous ici</h3>
     <label for="username">Votre email</label>
     <input type="email" #username required placeholder="Email" id="username" />
+    <div class="error-message" #errorMessage>
+      Cet email ne peut pas avoir accès à l'application
+    </div>
     <label for="password">Mot de passe</label>
     <div class="password-container">
       <input

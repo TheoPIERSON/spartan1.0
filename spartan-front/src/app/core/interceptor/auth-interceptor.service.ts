@@ -3,14 +3,17 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthInterceptorService implements HttpInterceptor {
+  constructor(private router: Router) {}
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -27,16 +30,30 @@ export class AuthInterceptorService implements HttpInterceptor {
         });
       }
     } else {
-      if (token && !request.url.endsWith('/customer/activate')) {
+      if (
+        token &&
+        !request.url.endsWith('/type_prestation/all') &&
+        !request.url.endsWith('/customer/add') &&
+        !request.url.endsWith('/customer/activate')
+      ) {
         // Exclure l'URL du token
         request = request.clone({
           setHeaders: {
-            Authorization: `bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
       }
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status == 403 || error.status == 0) {
+          // Token expiré ou invalide, redirige vers la page de login
+          localStorage.removeItem('access_token'); // Supprime le token expiré
+          this.router.navigate(['/']);
+        }
+        return throwError(error);
+      })
+    );
   }
 }

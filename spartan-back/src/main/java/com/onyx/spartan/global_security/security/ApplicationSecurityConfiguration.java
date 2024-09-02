@@ -1,5 +1,6 @@
-package com.onyx.spartan.security;
+package com.onyx.spartan.global_security.security;
 
+import com.onyx.spartan.global_security.jwt.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -33,14 +33,17 @@ public class ApplicationSecurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "/users/connexion").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users/add").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users/activate").permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/type_prestation/all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/customer/all").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/customer/activate").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/customer/connexion").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/customer/add").permitAll()
+
                         .anyRequest().authenticated()
                 )
-                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-
                 .build();
     }
     @Bean

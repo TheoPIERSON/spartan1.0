@@ -1,4 +1,4 @@
-package com.onyx.spartan.validation;
+package com.onyx.spartan.global_security.validation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

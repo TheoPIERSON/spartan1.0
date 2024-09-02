@@ -1,6 +1,6 @@
-package com.onyx.spartan.validation;
+package com.onyx.spartan.global_security.validation;
 
-import com.onyx.spartan.user.Users;
+import com.onyx.spartan.customer.Customers;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +15,9 @@ public class ValidationService {
     private ValidationRepository validationRepository;
     private NotificationService notificationService;
 
-    public void register(Users users){
+    public void register(Customers customers){
         Validation validation = new Validation();
-        validation.setUsers(users);
+        validation.setCustomers(customers);
         Instant creation = Instant.now();
         validation.setCreation(creation);
         Instant expiration = creation.plus(15, ChronoUnit.MINUTES);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/core/services/customer.service';
 
@@ -9,6 +9,7 @@ import { CustomerService } from 'src/app/core/services/customer.service';
 })
 export class LoginComponent {
   passwordFieldType = 'password'; // Initialiser avec 'password'
+  @ViewChild('errorMessage') errorMessage!: ElementRef;
 
   constructor(
     private customerService: CustomerService,
@@ -25,6 +26,8 @@ export class LoginComponent {
         // rediriger l'utilisateur vers la page d'accueil ou une autre page sécurisée
       },
       error: (err) => {
+        this.errorMessage.nativeElement.style.display = 'block'; // Affiche l'élément
+
         console.error(err);
         console.log("le token, l'email ou le password est invalide");
 

@@ -85,3 +85,8 @@ input:focus {
   border-radius: 5px;
   cursor: pointer;
 }
+.error-message {
+  color: red;
+  font-size: 0.7rem;
+  display: none;
+}

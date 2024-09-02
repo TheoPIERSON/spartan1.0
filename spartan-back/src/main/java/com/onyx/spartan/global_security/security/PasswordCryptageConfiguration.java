@@ -1,4 +1,4 @@
-package com.onyx.spartan.security;
+package com.onyx.spartan.global_security.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

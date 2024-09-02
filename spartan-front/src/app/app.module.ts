@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routes } from './app-routing.module';
@@ -45,6 +45,7 @@ import { AuthInterceptorService } from './core/interceptor/auth-interceptor.serv
 
 registerLocaleData(localeFr, 'fr');
 
+@Injectable()
 class CustomeDateFormatter extends CalendarNativeDateFormatter {
   public override dayViewHour({ date, locale }: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {

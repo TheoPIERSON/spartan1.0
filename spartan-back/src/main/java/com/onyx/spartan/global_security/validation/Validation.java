@@ -1,6 +1,6 @@
-package com.onyx.spartan.validation;
+package com.onyx.spartan.global_security.validation;
 
-import com.onyx.spartan.user.Users;
+import com.onyx.spartan.customer.Customers;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +24,5 @@ public class Validation {
     private Instant activation;
     private String code;
     @OneToOne(cascade = CascadeType.ALL)
-    private Users users;
+    private Customers customers;
 }
