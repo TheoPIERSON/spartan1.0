@@ -16,22 +16,15 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  login(username: string, password: string): void {
+  login(username: string, password: string) {
     this.customerService.connectCustomer(username, password).subscribe({
-      next: (response) => {
-        localStorage.setItem('access_token', response.bearer);
-        console.log(response.bearer);
-
+      next: () => {
+        // Redirection vers une page protégée après une connexion réussie
         this.router.navigate(['/customers']);
-        // rediriger l'utilisateur vers la page d'accueil ou une autre page sécurisée
       },
-      error: (err) => {
-        this.errorMessage.nativeElement.style.display = 'block'; // Affiche l'élément
-
-        console.error(err);
-        console.log("le token, l'email ou le password est invalide");
-
-        // afficher un message d'erreur à l'utilisateur
+      error: (error) => {
+        console.error('Login failed', error);
+        // Gérer l'erreur, par exemple afficher un message d'erreur à l'utilisateur
       },
     });
   }

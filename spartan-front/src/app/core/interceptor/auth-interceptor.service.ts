@@ -14,42 +14,20 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(private router: Router) {}
+
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('access_token');
-
-    // Vérifier si la requête est une requête POST vers "/connexion"
-    if (request.method === 'POST' && request.url.endsWith('/connexion')) {
-      if (token) {
-        request = request.clone({
-          setHeaders: {
-            Authorization: `${token}`, // Pour la requête POST "/connexion"
-          },
-        });
-      }
-    } else {
-      if (
-        token &&
-        !request.url.endsWith('/type_prestation/all') &&
-        !request.url.endsWith('/customer/add') &&
-        !request.url.endsWith('/customer/activate')
-      ) {
-        // Exclure l'URL du token
-        request = request.clone({
-          setHeaders: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      }
-    }
+    // Ajouter `withCredentials: true` à chaque requête pour inclure les cookies HTTP-Only
+    request = request.clone({
+      withCredentials: true,
+    });
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status == 403 || error.status == 401 || error.status == 0) {
-          // Token expiré ou invalide, redirige vers la page de login
-          localStorage.removeItem('access_token'); // Supprime le token expiré
+          // Redirection en cas d'erreur d'authentification
           this.router.navigate(['/']);
         }
         return throwError(error);

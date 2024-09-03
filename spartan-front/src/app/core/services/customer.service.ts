@@ -22,15 +22,14 @@ export class CustomerService {
     );
   }
 
-  public connectCustomer(
-    username: string,
-    password: string
-  ): Observable<{ bearer: string }> {
+  public connectCustomer(username: string, password: string): Observable<void> {
     const credentials = { username, password };
-
-    return this.http.post<{ bearer: string }>(
+    return this.http.post<void>(
       `${this.apiServerUrl}/customer/connexion`,
-      credentials
+      credentials,
+      {
+        withCredentials: true,
+      }
     );
   }
 
