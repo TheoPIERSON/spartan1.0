@@ -3,6 +3,7 @@ package com.onyx.spartan.global_security.jwt;
 import com.onyx.spartan.customer.CustomersService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,11 +33,18 @@ public class JwtFilter extends OncePerRequestFilter {
         String username = null;
         boolean isTokenExpired = true;
 
-        final String authorization = request.getHeader("Authorization");
-        if (authorization != null && authorization.startsWith("Bearer ")) {
-            token = authorization.substring(7);
+        // Extraire le JWT du cookie
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if ("JWT_TOKEN".equals(cookie.getName())) {
+                    token = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        if (token != null) {
             tokenInDatabase = this.jwtService.tokenByValue(token);
-            this.jwtService.tokenByValue(token);
             isTokenExpired = jwtService.isTokenExpired(token);
             username = jwtService.readUsername(token);
         }
@@ -52,4 +60,5 @@ public class JwtFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 }

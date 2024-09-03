@@ -2,6 +2,8 @@ package com.onyx.spartan.customer;
 
 import com.onyx.spartan.global_security.dto.AuthenticationDto;
 import com.onyx.spartan.global_security.jwt.JwtService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -63,23 +65,50 @@ public class CustomersController {
         return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
     }
     @PostMapping("/disconnect")
-    public void disconnectCustomer(){
+    public ResponseEntity<Void> disconnectCustomer(HttpServletResponse response) {
         this.jwtService.disconnectCustomer();
-        log.info("client déco");
+
+        // Supprimer le cookie en réécrivant avec une durée de vie nulle
+        Cookie jwtCookie = new Cookie("JWT_TOKEN", null);
+        jwtCookie.setHttpOnly(true);
+        jwtCookie.setSecure(true);
+        jwtCookie.setPath("/");
+        jwtCookie.setMaxAge(0); // Le cookie expire immédiatement
+
+        response.addCookie(jwtCookie);
+
+        log.info("client déconnecté");
+        return ResponseEntity.ok().build();
     }
 
+
     @PostMapping("/connexion")
-    public Map<String, String>connexion(@RequestBody AuthenticationDto authenticationDto){
-        final Authentication authenticate =  authenticationManager.authenticate(
+    public ResponseEntity<Void> connexion(@RequestBody AuthenticationDto authenticationDto, HttpServletResponse response) {
+        final Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authenticationDto.username(), authenticationDto.password())
         );
         log.info("connexion ok {}", authenticate.isAuthenticated());
-        if (authenticate.isAuthenticated()){
+
+        if (authenticate.isAuthenticated()) {
             log.info("authenticate ok");
 
-            return this.jwtService.generate(authenticationDto.username());
+            // Générer le JWT
+            String jwt = this.jwtService.generate(authenticationDto.username()).get(JwtService.BEARER);
+
+            // Créer un cookie HTTP-Only pour le JWT
+            Cookie jwtCookie = new Cookie("JWT_TOKEN", jwt);
+            jwtCookie.setHttpOnly(true);
+            jwtCookie.setSecure(true); // Important de le mettre à true en production
+            jwtCookie.setPath("/");
+            jwtCookie.setMaxAge(60 * 60); // Le cookie expire en 1 heure
+
+            // Ajouter le cookie à la réponse
+            response.addCookie(jwtCookie);
+
+            return ResponseEntity.ok().build();
         }
-        log.info("connexion ok2");
-        return null;
+
+        log.info("connexion échouée");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
 }

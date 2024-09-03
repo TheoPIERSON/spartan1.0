@@ -41,8 +41,7 @@ public class JwtService {
         this.disableTokens(customers);
         final Map<String, String> jwtMap = this.generateJwt(customers);
 
-        final Jwt jwt = Jwt
-                .builder()
+        final Jwt jwt = Jwt.builder()
                 .value(jwtMap.get(BEARER))
                 .desactive(false)
                 .expire(false)
