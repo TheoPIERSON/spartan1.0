@@ -34,6 +34,12 @@ export class CustomerService {
     );
   }
 
+  public disconnectCustomer(): Observable<void> {
+    return this.http.post<void>(
+      `${this.apiServerUrl}/customer/disconnect`,
+      null
+    );
+  }
   // public updateCustomer(customer: Customers): Observable<Customers> {
   //   return this.http.put<Customers>(
   //     `${this.apiServerUrl}/customers/update`,

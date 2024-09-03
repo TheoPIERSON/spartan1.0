@@ -1,5 +1,5 @@
 <div class="sidebar">
-  <div class="sidebar-logo">
+  <button (click)="disconnect()" (keyup)="disconnect()" class="sidebar-logo">
     <svg
       width="92"
       height="38"
@@ -54,7 +54,7 @@
         mask="url(#path-3-outside-2_76_1713)"
       />
     </svg>
-  </div>
+  </button>
 
   <h3>Menu principal</h3>
   <nav>
@@ -138,4 +138,9 @@
     <li>Modifier images</li>
     <li>Modifier textes</li>
   </ul>
+  <h3>
+    <button class="disconnect" (click)="disconnect()" (keyup)="disconnect()">
+      se déconnecter
+    </button>
+  </h3>
 </div>
