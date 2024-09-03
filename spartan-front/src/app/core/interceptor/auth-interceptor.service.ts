@@ -47,7 +47,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status == 403 || error.status == 0) {
+        if (error.status == 403 || error.status == 401 || error.status == 0) {
           // Token expiré ou invalide, redirige vers la page de login
           localStorage.removeItem('access_token'); // Supprime le token expiré
           this.router.navigate(['/']);
