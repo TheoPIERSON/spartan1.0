@@ -18,3 +18,5 @@ La page de login permet à l'utilisateur d'obtenir un jeton JWT qui va lui perme
 Si son token est périmé ou invalide alors l'utilisateur est automatiquement redirigé vers la page de login.
 
 Il peut également se déconnecté lui-même en cliquant sur le logo de l'application ou sur le bouton déconnection de la navbar.
+
+Le token est actuellement stocké dans le localStorage, la prochaine étage sera d'utiliser les cookies.
