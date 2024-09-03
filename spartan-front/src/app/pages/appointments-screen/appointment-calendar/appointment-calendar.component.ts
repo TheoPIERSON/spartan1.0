@@ -5,6 +5,8 @@ import { Appointment } from 'src/app/Models/appointmentModel';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
 import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
+import { AppointmentIdService } from 'src/app/core/services/AppointmentService/appointment-id.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-appointment-calendar',
@@ -19,6 +21,7 @@ export class AppointmentCalendarComponent implements OnInit {
 
   constructor(
     private appointmentService: AppointmentService,
+    private appointmentIdService: AppointmentIdService,
     public matDialog: MatDialog,
     private refreshService: RefreshService
   ) {}
@@ -31,6 +34,18 @@ export class AppointmentCalendarComponent implements OnInit {
         // Mettez ici le code que vous souhaitez exécuter lors du rafraîchissement du composant
         this.appointment$ = this.appointmentService.getAppointments(); // Réinitialisez les données du composant
       });
+  }
+
+  onCardClick(id: number): void {
+    this.appointmentService.findById(id).subscribe(
+      (res: Appointment) => {
+        this.appointmentIdService.setSelectedAppointmentId(id);
+        this.openModal(); // Ouvrez la modale avec les informations du client
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
   }
 
   openModal() {
