@@ -8,7 +8,6 @@ import com.onyx.spartan.role.Role;
 import com.onyx.spartan.role.RoleType;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,11 +43,11 @@ public class CustomersService implements UserDetailsService {
 
     @Transactional
     public Customers addCustomer(Customers customer) {
-        if (!isEmailValid(customer.getEmail())) {
+        if (!isEmailValid(customer.getUsername())) {
             throw new RuntimeException("Votre email n'est pas valide");
         }
 
-        Optional<Customers> customersOptional = customerRepository.findByEmail(customer.getEmail());
+        Optional<Customers> customersOptional = customerRepository.findByEmail(customer.getUsername());
         if (customersOptional.isPresent()) {
             throw new RuntimeException("Cet email est déjà utilisé");
         }
@@ -68,8 +67,8 @@ public class CustomersService implements UserDetailsService {
         Customers existingCustomer = customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(id));
 
-        if (!isEmailValid(updatedCustomer.getEmail())) {
-            new InvalidEmailException(updatedCustomer.getEmail());
+        if (!isEmailValid(updatedCustomer.getUsername())) {
+            new InvalidEmailException(updatedCustomer.getUsername());
         }
 
         BeanUtils.copyProperties(updatedCustomer, existingCustomer, "id");

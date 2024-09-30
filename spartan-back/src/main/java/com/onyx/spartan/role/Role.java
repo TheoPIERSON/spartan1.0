@@ -8,7 +8,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name ="role")
@@ -19,4 +18,19 @@ public class Role {
     private Long id;
     @Enumerated(EnumType.STRING)
     private RoleType role;
+
+    // Constructor
+    public Role() {}
+
+    public Role(RoleType role) {
+        this.role = role;
+    }
+
+    public RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
+    }
 }

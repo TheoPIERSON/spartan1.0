@@ -93,7 +93,7 @@ public class JwtService {
         final String bearer = Jwts.builder()
                 .setIssuedAt(new Date(currentTime))
                 .setExpiration(new Date(expirationTime))
-                .setSubject(customers.getEmail())
+                .setSubject(customers.getUsername())
                 .addClaims(claims) // Utiliser addClaims() pour inclure les revendications
                 .signWith(getKey(), SignatureAlgorithm.HS256)
                 .compact();
@@ -106,7 +106,7 @@ public class JwtService {
 
     public void disconnectCustomer() {
         Customers customer = (Customers) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Jwt jwt = this.jwtRepository.findCustomerValidToken(customer.getEmail(), false, false)
+        Jwt jwt = this.jwtRepository.findCustomerValidToken(customer.getUsername(), false, false)
                 .orElseThrow(()-> new RuntimeException("Le token est invalide"));
         jwt.setExpire(true);
         jwt.setDesactive(true);

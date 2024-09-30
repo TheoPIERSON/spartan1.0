@@ -35,15 +35,21 @@ public class Customers implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL)
     private Role role;
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+this.role.getRole()));
     }
-
     @Override
     public String getPassword() {
         return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
