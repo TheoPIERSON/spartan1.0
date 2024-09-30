@@ -4,8 +4,7 @@ import com.onyx.spartan.customer.Customers;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,5 +21,43 @@ public class Jwt {
     @JoinColumn(name = "customer_id")
     private Customers customers;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public boolean isDesactive() {
+        return desactive;
+    }
+
+    public void setDesactive(boolean desactive) {
+        this.desactive = desactive;
+    }
+
+    public boolean isExpire() {
+        return expire;
+    }
+
+    public void setExpire(boolean expire) {
+        this.expire = expire;
+    }
+
+    public Customers getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Customers customers) {
+        this.customers = customers;
+    }
 }

@@ -16,7 +16,7 @@ public class NotificationService {
     public void sendNotification(Validation validation){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("no-reply@onyx.fr");
-        message.setTo(validation.getCustomers().getEmail());
+        message.setTo(validation.getCustomers().getUsername());
         message.setSubject("Votre code d'activation Onyx Institut");
         String text =  String.format(
                 "Bonjour %s %s,\n\n"+

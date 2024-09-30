@@ -8,8 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -30,4 +29,43 @@ public class Payment {
     @JoinColumn(name = "id_type_payment", nullable = false)
     private TypePayment typePayment;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public Appointment getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
+
+    public TypePayment getTypePayment() {
+        return typePayment;
+    }
+
+    public void setTypePayment(TypePayment typePayment) {
+        this.typePayment = typePayment;
+    }
 }

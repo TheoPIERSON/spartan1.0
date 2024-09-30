@@ -34,4 +34,12 @@ public class Appointment {
             joinColumns = @JoinColumn(name = "id_appointment"),
             inverseJoinColumns = @JoinColumn(name = "id_type_payment"))
     Set<TypePayment> payment;
+
+    public Set<TypePayment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Set<TypePayment> payment) {
+        this.payment = payment;
+    }
 }

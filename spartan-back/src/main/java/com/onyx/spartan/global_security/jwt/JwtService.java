@@ -51,7 +51,7 @@ public class JwtService {
         return jwtMap;
     }
     private void disableTokens(Customers customers) {
-        final List<Jwt> jwtList = this.jwtRepository.findCustomer(customers.getEmail()).peek(
+        final List<Jwt> jwtList = this.jwtRepository.findCustomer(customers.getUsername()).peek(
                 jwt -> {
                     jwt.setDesactive(true);
                     jwt.setExpire(true);

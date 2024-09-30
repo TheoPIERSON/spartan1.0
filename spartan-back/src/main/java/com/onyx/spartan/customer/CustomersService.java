@@ -20,13 +20,19 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-@AllArgsConstructor
 @Service
 public class CustomersService implements UserDetailsService {
 
     private final CustomersRepository customerRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final ValidationService validationService;
+
+    // Constructeur manuel pour l'injection de dépendances
+    public CustomersService(CustomersRepository customerRepository, BCryptPasswordEncoder passwordEncoder, ValidationService validationService) {
+        this.customerRepository = customerRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.validationService = validationService;
+    }
 
     private static boolean isEmailValid(String email) {
         String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
