@@ -1,6 +1,7 @@
 package com.onyx.spartan.global_security.jwt;
 
 import com.onyx.spartan.customer.Customers;
+import com.onyx.spartan.customer.CustomersController;
 import com.onyx.spartan.customer.CustomersService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -8,7 +9,8 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Transactional
-@Slf4j
 @AllArgsConstructor
 @Service
 public class JwtService {
@@ -31,6 +32,8 @@ public class JwtService {
     private final String ENCRYPTION_KEY = "8MPbKZPYhcw8r8VSrf3KJD3ysLCZAwUFbhD0eGAfYtVnhq+K6fvGbtdgqNlFVjL4";
     private CustomersService customersService;
     private JwtRepository jwtRepository;
+    private static final Logger log = LoggerFactory.getLogger(CustomersController.class);
+
 
     public Jwt tokenByValue(String value) {
         return this.jwtRepository.findByValueAndDesactiveAndExpire(value, false, false)
@@ -41,12 +44,13 @@ public class JwtService {
         this.disableTokens(customers);
         final Map<String, String> jwtMap = this.generateJwt(customers);
 
-        final Jwt jwt = Jwt.builder()
-                .value(jwtMap.get(BEARER))
-                .desactive(false)
-                .expire(false)
-                .customers(customers)
-                .build();
+        final Jwt jwt = new Jwt(
+                jwtMap.get(BEARER),   // valeur du token
+                false,                // desactive
+                false,                // expire
+                customers             // customer associé
+        );
+
         this.jwtRepository.save(jwt);
         return jwtMap;
     }

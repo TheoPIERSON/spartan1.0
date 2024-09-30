@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,6 +19,13 @@ public class Jwt {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "customer_id")
     private Customers customers;
+
+    public Jwt(String value, boolean desactive, boolean expire, Customers customers) {
+        this.value = value;
+        this.desactive = desactive;
+        this.expire = expire;
+        this.customers = customers;
+    }
 
     public int getId() {
         return id;
