@@ -9,6 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public class CustomerControllerTest {
 
     @Mock
     CustomersRepository dao;
-
     @InjectMocks
     CustomersService service;
+
 
     @Test
     void testFindAllCustomers() {
@@ -57,12 +58,14 @@ public class CustomerControllerTest {
 
     @Test
     void addCustomers() throws Exception {
+
         Customers customer = new Customers();
         customer.setFirstname("test prenom ok");
         customer.setLastname("test nom ok");
         customer.setBirthdate(Date.valueOf("2000-01-01"));
-        customer.setEmail("test mail ok");
+        customer.setEmail("testmail@ok.com");
         customer.setPhoneNumber("07 07 07 07 07");
+        customer.setPassword("0000");
 
         service.addCustomer(customer);
         verify(dao, times(1)).save(customer);
