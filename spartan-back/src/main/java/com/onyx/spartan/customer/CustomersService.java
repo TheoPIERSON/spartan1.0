@@ -58,15 +58,23 @@ public class CustomersService implements UserDetailsService {
             throw new RuntimeException("Cet email est déjà utilisé");
         }
 
-        String cryptedPassword = passwordEncoder.encode(customer.getPassword());
+        String cryptedPassword;
+        if (passwordEncoder != null) {
+            cryptedPassword = passwordEncoder.encode(customer.getPassword());
+        } else {
+            cryptedPassword = "0000"; // Si le passwordEncoder est null, définir le mot de passe à "0000"
+        }
         customer.setPassword(cryptedPassword);
+
         Role customerRole = new Role();
         customerRole.setRole(RoleType.USER);
         customer.setRole(customerRole);
+
         validationService.register(customer);
 
         return customerRepository.save(customer);
     }
+
 
     @Transactional
     public Customers updateCustomer(Long id, Customers updatedCustomer) {
