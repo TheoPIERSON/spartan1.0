@@ -1,33 +1,31 @@
-version: "2.2"
-
 services:
   app-spartan-postgres: # Nom du container de la BDD
     image: postgres:latest
     ports:
       - "5432:5432"
-    environment: # Adresse de la database
-      POSTGRES_DB: app-spartan-postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
+    environment: # Adresse de la base de donnees depuis les variables d'environnement
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - app-spartan-postgres-data:/var/lib/postgresql/data # Volume pour faire persister la data
-    healthcheck: # Interval pour lancer le reste du code 10s après la fin de la BDD
-      test: ["CMD", "pg_isready", "-q", "-d", "localhost", "-U", "postgres"]
+      - app-spartan-postgres-data:/var/lib/postgresql/data # Volume pour persister la data
+    healthcheck: # Interval pour lancer le reste du code 10s apres la fin de la BDD
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_NAME}", "-U", "${DB_USERNAME}"]
       interval: 10s
       timeout: 5s
       retries: 3
 
-  # frontend: # Nom du container du frontend
-  #   image: spartan-frontend-image
-  #   ports:
-  #     - "4200:4200"
-  #   build:
-  #     context: ./spartan-front
-  #     dockerfile: dockerfile
-  #   volumes:
-  #     - ./spartan-front:/usr/local/app # Montage du code source local dans le conteneur
-  #   depends_on:
-  #     - app-spartan-postgres
+  frontend: # Nom du container du frontend
+    image: spartan-frontend-image
+    ports:
+      - "4200:4200"
+    build:
+      context: ./spartan-front
+      dockerfile: dockerfile
+    volumes:
+      - ./spartan-front:/usr/local/app # Montage du code source local dans le conteneur
+    depends_on:
+      - app-spartan-postgres
 
   backend: # Nom du container du backend
     image: spartan-backend-image
