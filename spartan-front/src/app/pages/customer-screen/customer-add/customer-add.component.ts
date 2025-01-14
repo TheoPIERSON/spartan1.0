@@ -22,6 +22,8 @@ export class CustomerAddComponent {
 
   public onAddCustomer(addForm: NgForm): void {
     document.getElementById('add-customer-btn');
+    console.log('Form Data:', addForm.value);
+
     this.customerService.addCustomer(addForm.value).subscribe(
       (response: Customers) => {
         console.log(response);

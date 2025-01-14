@@ -45,11 +45,14 @@ public class ApplicationSecurityConfiguration {
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/type_prestation/all").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/customer/all").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/activate").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/connexion").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/customer/add").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/**").permitAll()
+
+//                        .requestMatchers(HttpMethod.GET, "/type_prestation/all").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/customer/all").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/customer/activate").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/customer/connexion").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/customer/add").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

@@ -2,6 +2,7 @@ package com.onyx.spartan.global_security.validation;
 
 import com.onyx.spartan.customer.Customers;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -11,7 +12,7 @@ import java.util.Random;
 @AllArgsConstructor
 @Service
 public class ValidationService {
-
+    @Autowired
     private ValidationRepository validationRepository;
     private NotificationService notificationService;
 
