@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importez ReactiveFormsModule ici
 import { CustomerComponent } from './customer.component';
-import { CustomerAddComponent } from '../customer-add/customer-add.component';
+import { CustomerAddComponent } from '../../components/customer/customer-add/customer-add.component';
 import { CustomerCardComponent } from '../customer-card/customer-card.component';
 
 describe('CustomerComponent', () => {

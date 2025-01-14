@@ -3,12 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerComponent } from './pages/customer-screen/customer/customer.component';
+import { CustomerComponent } from './pages/customer/customer.component';
 import { CustomerService } from './core/services/customer.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { CustomerCardComponent } from './pages/customer-screen/customer-card/customer-card.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { CustomerAddComponent } from './pages/customer-screen/customer-add/customer-add.component';
+import { CustomerAddComponent } from './components/customer/customer-add/customer-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,8 +20,8 @@ import { NgToastModule } from 'ng-angular-popup';
 
 import { ModalComponent } from './components/modals/modal/modal.component';
 import { CustomerIdService } from './core/services/customer-id.service';
-import { AppointmentComponent } from './pages/appointments-screen/appointment/appointment.component';
-import { AppointmentAddComponent } from './pages/appointments-screen/appointment-add/appointment-add.component';
+import { AppointmentComponent } from './pages/appointment/appointment.component';
+import { AppointmentAddComponent } from './components/appointment/appointment-add/appointment-add.component';
 import { RouterLink, provideRouter } from '@angular/router';
 import {
   CalendarDateFormatter,
@@ -32,16 +31,17 @@ import {
   DateFormatterParams,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { AppointmentCalendarComponent } from './pages/appointments-screen/appointment-calendar/appointment-calendar.component';
 
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
-import { AppointmentModalComponent } from './pages/appointments-screen/appointment-modal/appointment-modal.component';
-import { AccountingComponent } from './pages/accounting-screen/accounting/accounting.component';
-import { AccountingBalanceComponent } from './pages/accounting-screen/accounting-balance/accounting-balance.component';
-import { PaymentListComponent } from './pages/accounting-screen/payment-list/payment-list.component';
+import { AppointmentModalComponent } from './components/appointment/appointment-modal/appointment-modal.component';
+import { AccountingComponent } from './pages/accounting/accounting.component';
+import { AccountingBalanceComponent } from './components/accounting/accounting-balance/accounting-balance.component';
+import { PaymentListComponent } from './components/accounting/payment-list/payment-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptorService } from './core/interceptor/auth-interceptor.service';
+import { AppointmentCalendarComponent } from './components/appointment/appointment-calendar/appointment-calendar.component';
+import { CustomerCardComponent } from './components/customer/customer-card/customer-card.component';
 
 registerLocaleData(localeFr, 'fr');
 
