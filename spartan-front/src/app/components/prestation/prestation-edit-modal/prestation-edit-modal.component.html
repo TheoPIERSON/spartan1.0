@@ -4,7 +4,7 @@
       <div class="data-field">
         <input
           name="id_type_prestation"
-          [(ngModel)]="selectedTypePrestation.id"
+          (ngModel)="(selectedTypePrestation.id)"
           type="hidden"
         />
         <label for="title">Titre :</label>
@@ -22,7 +22,7 @@
           class="input-data"
           name="duration"
           id="duration"
-          [(ngModel)]="selectedTypePrestation.duration"
+          (ngModel)="(selectedTypePrestation.duration)"
         >
           <option value="10">10 min</option>
           <option value="20">20 min</option>
@@ -37,7 +37,7 @@
         <label for="price">Prix :</label>
         <input
           name="price"
-          [(ngModel)]="selectedTypePrestation.price"
+          (ngModel)="(selectedTypePrestation.price)"
           class="input-data"
           type="text"
           placeholder="10000€"
@@ -50,7 +50,7 @@
         <label for="description">Description :</label>
         <textarea
           name="description"
-          [(ngModel)]="selectedTypePrestation.description"
+          (ngModel)="(selectedTypePrestation.description)"
           class="input-data textarea"
           placeholder="Description de la prestation"
           maxlength="250"
