@@ -8,8 +8,8 @@ import { TypePrestationIdService } from 'src/app/core/services/Type_prestation/t
 import { TypePrestationService } from 'src/app/core/services/Type_prestation/type-prestation.service';
 import { PrestationEditModalComponent } from '../prestation-edit-modal/prestation-edit-modal.component';
 import { PrestationDeleteModalComponent } from '../prestation-delete-modal/prestation-delete-modal.component';
-import { Type_prestation } from 'src/app/core/Models/classes/type_prestation_class';
-import { TypePrestation } from 'src/app/core/Models/type_prestation';
+import { TypePrestation } from 'src/app/Models/type_prestation';
+import { Type_prestation } from 'src/app/core/classes/type_prestation_class';
 
 @Component({
   selector: 'app-prestations-card',

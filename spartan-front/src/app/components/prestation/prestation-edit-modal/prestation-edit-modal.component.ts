@@ -1,10 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Type_prestation } from 'src/app/core/Models/classes/type_prestation_class';
-import { TypePrestation } from 'src/app/core/Models/type_prestation';
+import { Type_prestation } from 'src/app/core/classes/type_prestation_class';
 import { TypePrestationIdService } from 'src/app/core/services/Type_prestation/type-prestation-id.service';
 import { TypePrestationService } from 'src/app/core/services/Type_prestation/type-prestation.service';
+import { TypePrestation } from 'src/app/Models/type_prestation';
 
 @Component({
   selector: 'app-prestation-edit-modal',

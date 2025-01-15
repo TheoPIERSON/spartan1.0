@@ -9,7 +9,7 @@ import { CustomerIdService } from '../../../core/services/customer-id.service';
 import { Observable, combineLatest, map, startWith } from 'rxjs';
 import { ModalDeleteComponent } from '../../../components/modals/modal-delete/modal-delete.component';
 import { FormBuilder } from '@angular/forms';
-import { RefreshService } from '../../../core/services/refresh/refresh.service';
+import { RefreshService } from '../../../core/services/Refresh/refresh.service';
 
 @Component({
   selector: 'app-customer-card',

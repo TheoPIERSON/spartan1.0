@@ -5,7 +5,7 @@ import { CustomerIdService } from 'src/app/core/services/customer-id.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { Customer } from 'src/app/core/classes/customerClass';
 import { Customers } from 'src/app/Models/customerModel';
-import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
+import { RefreshService } from 'src/app/core/services/Refresh/refresh.service';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({

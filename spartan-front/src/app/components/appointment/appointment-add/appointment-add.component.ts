@@ -9,7 +9,7 @@ import { Customers } from 'src/app/Models/customerModel';
 import { Customer } from 'src/app/core/classes/customerClass';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 import { CustomerService } from 'src/app/core/services/customer.service';
-import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
+import { RefreshService } from 'src/app/core/services/Refresh/refresh.service';
 
 @Component({
   selector: 'app-appointment-add',

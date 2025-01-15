@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/Models/appointmentModel';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
-import { RefreshService } from 'src/app/core/services/refresh/refresh.service';
+import { RefreshService } from 'src/app/core/services/Refresh/refresh.service';
 import { AppointmentIdService } from 'src/app/core/services/AppointmentService/appointment-id.service';
 import { HttpErrorResponse } from '@angular/common/http';
 

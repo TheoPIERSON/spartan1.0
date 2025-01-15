@@ -43,6 +43,8 @@ import { AuthInterceptorService } from './core/interceptor/auth-interceptor.serv
 import { AppointmentCalendarComponent } from './components/appointment/appointment-calendar/appointment-calendar.component';
 import { CustomerCardComponent } from './components/customer/customer-card/customer-card.component';
 import { PrestationComponent } from './pages/prestation/prestation.component';
+import { PrestationsAddComponent } from './components/prestation/prestations-add/prestations-add.component';
+import { PrestationsCardComponent } from './components/prestation/prestations-card/prestations-card.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -79,6 +81,8 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     PaymentListComponent,
     LoginComponent,
     PrestationComponent,
+    PrestationsAddComponent,
+    PrestationsCardComponent,
   ],
   imports: [
     BrowserModule,

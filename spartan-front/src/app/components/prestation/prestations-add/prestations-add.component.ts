@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
-import { TypePrestation } from 'src/app/core/Models/type_prestation';
 import { RefreshService } from 'src/app/core/services/Refresh/refresh.service';
 import { TypePrestationService } from 'src/app/core/services/Type_prestation/type-prestation.service';
+import { TypePrestation } from 'src/app/Models/type_prestation';
 
 @Component({
   selector: 'app-prestations-add',

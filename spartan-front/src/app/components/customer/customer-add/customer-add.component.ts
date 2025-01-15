@@ -4,7 +4,7 @@ import { Customers } from '../../../Models/customerModel';
 import { CustomerService } from '../../../core/services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgToastService } from 'ng-angular-popup';
-import { RefreshService } from '../../../core/services/refresh/refresh.service';
+import { RefreshService } from '../../../core/services/Refresh/refresh.service';
 
 @Component({
   selector: 'app-customer-add',

@@ -4,12 +4,18 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { AppointmentComponent } from './pages/appointment/appointment.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AccountingComponent } from './pages/accounting/accounting.component';
+import { PrestationComponent } from './pages/prestation/prestation.component';
 
 export const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
   { path: 'appointments', component: AppointmentComponent },
   { path: 'accounting', component: AccountingComponent },
   { path: '', component: LoginComponent, data: { displaySidebar: false } },
+  {
+    path: 'prestation',
+    component: PrestationComponent,
+    data: { displaySidebar: false },
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
