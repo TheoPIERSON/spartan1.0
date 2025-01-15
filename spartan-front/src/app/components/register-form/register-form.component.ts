@@ -6,11 +6,11 @@ import { CustomerService } from 'src/app/core/services/customer.service';
 import { Customers } from 'src/app/Models/customerModel';
 
 @Component({
-  selector: 'app-appointment-form',
-  templateUrl: './appointment-form.component.html',
-  styleUrls: ['./appointment-form.component.css'],
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css'],
 })
-export class AppointmentFormComponent {
+export class RegisterFormComponent {
   public customers: Customers[] = [];
 
   passwordFieldType: string = 'password'; // Initialiser avec 'password'

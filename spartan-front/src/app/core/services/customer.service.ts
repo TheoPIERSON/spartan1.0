@@ -58,4 +58,26 @@ export class CustomerService {
   public deleteCustomer(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiServerUrl}/customer/delete/${id}`);
   }
+  public activateAccount(code: string): Observable<Customers> {
+    const activation = { code: code };
+    console.log(activation);
+    return this.http.post<Customers>(
+      `${this.apiServerUrl}/customer/activate`,
+      activation
+    );
+  }
+  public askNewPassword(email: string): Observable<string> {
+    return this.http.post<string>(
+      `${this.apiServerUrl}/customer/forgot-password`,
+      { email }
+    );
+  }
+  public updatePassword(token: string, password: string): Observable<any> {
+    const payload = { token, password };
+    return this.http.post<any>(
+      `${this.apiServerUrl}/customer/reset-password`,
+      payload,
+      { responseType: 'text' as 'json' } // <-- indique que la réponse est du texte
+    );
+  }
 }
