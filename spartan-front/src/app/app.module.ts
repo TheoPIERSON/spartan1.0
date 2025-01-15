@@ -42,6 +42,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptorService } from './core/interceptor/auth-interceptor.service';
 import { AppointmentCalendarComponent } from './components/appointment/appointment-calendar/appointment-calendar.component';
 import { CustomerCardComponent } from './components/customer/customer-card/customer-card.component';
+import { PrestationComponent } from './pages/prestation/prestation.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -77,6 +78,7 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     AccountingBalanceComponent,
     PaymentListComponent,
     LoginComponent,
+    PrestationComponent,
   ],
   imports: [
     BrowserModule,
