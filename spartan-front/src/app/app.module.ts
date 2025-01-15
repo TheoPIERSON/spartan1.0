@@ -48,6 +48,7 @@ import { PrestationsCardComponent } from './components/prestation/prestations-ca
 import { PrestationEditModalComponent } from './components/prestation/prestation-edit-modal/prestation-edit-modal.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AppointmentFormComponent } from './components/register-form/appointment-form.component';
+import { ValidationComponent } from './pages/validation/validation.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -89,6 +90,7 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     PrestationEditModalComponent,
     RegisterComponent,
     AppointmentFormComponent,
+    ValidationComponent,
   ],
   imports: [
     BrowserModule,

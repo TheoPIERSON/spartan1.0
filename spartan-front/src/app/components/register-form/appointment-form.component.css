@@ -1,5 +1,4 @@
 * {
-  font-family: "Lobster", sans-serif;
   font-style: normal;
   list-style: none;
 }
@@ -29,11 +28,8 @@ form {
 form * {
   letter-spacing: 0.5px;
   outline: none;
-  border: none;
 }
 .form-title {
-  color: white;
-  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
   font-size: 150%;
   display: flex;
   justify-content: center;
@@ -54,6 +50,7 @@ label {
   margin-bottom: 0.5rem;
   font-size: 14px;
   font-weight: 300;
+  border: 1px solid black;
 }
 ::placeholder {
   color: var(--input-placeholder-color);
@@ -74,11 +71,10 @@ label {
   padding: 0.5rem;
   margin: 0.5rem;
   background-color: rgba(0, 0, 0, 0.037);
-  text-decoration: none;
-  width: 8rem;
+  text-decoration: underline;
+  width: 9rem;
   border-radius: 5px;
-  color: aliceblue;
-  border: 1.5px solid var(--border-btn-color);
+  border: 1.5px solid transparent;
 }
 
 #connect-btn:hover {
@@ -86,33 +82,22 @@ label {
   transition: 200ms;
 }
 #register-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem;
-  margin: 0.5rem;
-  background-color: var(--border-btn-color);
+  background-color: #000000;
   text-decoration: none;
-  width: 8rem;
   border: 3px solid transparent;
   border-radius: 5px;
+  margin: 0.5rem;
+  width: 9rem;
   color: aliceblue;
 }
 .input-btn:hover {
   background-color: var(--border-btn-color-light);
 }
-.hero-banner {
-  display: grid;
-  place-items: center;
-}
-.hero {
-  font-family: "Andika", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
-  font-size: calc(5000vw / 1018);
-}
-.logo {
-  width: 43rem;
-}
+
 .password-container {
   display: flex;
   align-items: center;
