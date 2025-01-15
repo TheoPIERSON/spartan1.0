@@ -1,0 +1,103 @@
+<div class="container" id="appointment-form">
+  <div class="hero-banner">
+    <span class="hero">Prenons rendez-vous !</span>
+    <img class="logo" src="../../../assets/images/logo.webp" alt="" />
+  </div>
+
+  <form #addForm="ngForm" (ngSubmit)="onAddCustomer(addForm)">
+    <span class="form-title">Inscrivez-vous</span>
+    <div class="form-row">
+      <div class="data-field">
+        <label for="">Nom :</label>
+        <input
+          name="lastname"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="Nom"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Prenom :</label>
+        <input
+          name="firstname"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="Prénom"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Numéro de téléphone :</label>
+        <input
+          name="phoneNumber"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="+33 6 07 08 09 10"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="data-field">
+        <label for="">Mail :</label>
+        <input
+          name="email"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="exemple@onyx.com"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Date de naissance :</label>
+        <input
+          name="birthdate"
+          ngModel
+          class="input-data"
+          type="date"
+          required
+        />
+      </div>
+      <div class="data-field">
+        <label for="password">Mot de passe</label>
+        <div class="password-container">
+          <input
+            name="password"
+            class="input-data"
+            ngModel
+            [type]="passwordFieldType"
+            placeholder="Mot de passe"
+            id="password"
+            required
+          />
+          <button type="button" (click)="togglePasswordVisibility()">
+            {{ passwordFieldType === "password" ? "👁️" : "🕳️" }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="form-btn">
+      <input
+        id="connect-btn"
+        class="input-btn"
+        type="button"
+        value="Se connecter"
+        (click)="redirectToLogin()"
+        disabled
+      />
+      <input
+        class="input-btn"
+        [disabled]="addForm.invalid"
+        id="register-btn"
+        type="submit"
+        value="S'inscrire"
+      />
+    </div>
+  </form>
+</div>
