@@ -1,0 +1,64 @@
+<form class="search-container" [formGroup]="search">
+  <h2>Nouvelle prestation</h2>
+  <div class="form-row">
+    <div class="data-field">
+      <label for="customer-name">Nom de la prestation :</label>
+      <input
+        class="input-data"
+        type="text"
+        required
+        placeholder="Nom"
+        formControlName="title"
+      />
+    </div>
+    <div class="data-field">
+      <label for="">Prix :</label>
+      <input
+        class="input-data"
+        type="text"
+        required
+        placeholder=" 00 €"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="data-field">
+      <label for="">Durée :</label>
+      <select
+        class="input-data"
+        name="duration"
+        id="duration"
+        formControlName="duration"
+      >
+        <option value="10">10 min</option>
+        <option value="15">15 min</option>
+        <option value="20">20 min</option>
+        <option value="30">30 min</option>
+        <option value="45">45 min</option>
+        <option value="60">1h</option>
+        <option value="75">1h 15min</option>
+        <option value="90">1h 30min</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row" id="form-row-description">
+    <div class="data-field">
+      <label for="">Description :</label>
+      <textarea
+        name="description"
+        class="input-data textarea"
+        placeholder="Description de la prestation"
+        maxlength="500"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div id="hidden"></div>
+    <input
+      class="input-btn form-btn"
+      id="add-prestation-btn"
+      type="submit"
+      value="Ajouter la prestation"
+      (click)="onAddAppointment()"
+    />
+  </div>
+</form>
