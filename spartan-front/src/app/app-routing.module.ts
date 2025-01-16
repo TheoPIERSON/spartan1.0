@@ -8,6 +8,7 @@ import { PrestationComponent } from './pages/prestation/prestation.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ValidationComponent } from './pages/validation/validation.component';
 import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 export const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
@@ -28,6 +29,11 @@ export const routes: Routes = [
   {
     path: 'password-forgotten',
     component: PasswordForgottenComponent,
+    data: { displaySidebar: false },
+  },
+  {
+    path: 'password-reset/:token',
+    component: ChangePasswordComponent,
     data: { displaySidebar: false },
   },
 ];
