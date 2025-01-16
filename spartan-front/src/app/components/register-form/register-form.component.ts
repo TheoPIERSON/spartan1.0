@@ -21,7 +21,7 @@ export class RegisterFormComponent {
   ) {}
 
   redirectToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
   redirectToActivation() {
     this.router.navigate(['/activation']);

@@ -24,7 +24,7 @@ export class ActivationFormComponent {
   });
 
   redirectToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   redirectToHomepage() {
