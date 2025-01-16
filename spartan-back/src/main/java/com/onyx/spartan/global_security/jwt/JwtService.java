@@ -116,6 +116,33 @@ public class JwtService {
         jwt.setDesactive(true);
         this.jwtRepository.save(jwt);
     }
+    public Map<String, String> generatePasswordResetToken(Customers customer) {
+        final long currentTime = System.currentTimeMillis();
+        final long expirationTime = currentTime + 15 * 60 * 1000; // Expire dans 15 minutes
+
+        final Map<String, Object> claims = Map.of(
+                "id", customer.getId(),
+                "type", "PASSWORD_RESET" // Identifie l'usage du jeton
+        );
+
+        final String resetToken = Jwts.builder()
+                .setIssuedAt(new Date(currentTime))
+                .setExpiration(new Date(expirationTime))
+                .setSubject(customer.getEmail())
+                .addClaims(claims)
+                .signWith(getKey(), SignatureAlgorithm.HS256)
+                .compact();
+
+        return Map.of(BEARER, resetToken);
+    }
+    public boolean isResetTokenValid(String token) {
+        try {
+            String type = this.getClaim(token, claims -> claims.get("type", String.class));
+            return "PASSWORD_RESET".equals(type) && !isTokenExpired(token);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     @Scheduled(cron = "@daily")
     //@Scheduled(cron = "0 */1 * * * *")

@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <form (ngSubmit)="login(username.value, password.value)">
     <h3>Connectez-vous ici</h3>
     <label for="username">Votre email</label>
@@ -22,6 +22,13 @@
         {{ passwordFieldType === "password" ? "👁️" : "🕳️" }}
       </button>
     </div>
+    <button
+      type="button"
+      routerLink="/password-forgotten"
+      class="forgot-password-btn"
+    >
+      <span>Mot de passe oublié ?</span>
+    </button>
 
     <div class="button">
       <button class="register-btn" routerLink="register">
@@ -32,4 +39,4 @@
       </button>
     </div>
   </form>
-</div>
+</section>

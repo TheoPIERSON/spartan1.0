@@ -100,3 +100,9 @@ input:focus {
   font-size: 0.7rem;
   display: none;
 }
+.forgot-password-btn {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -7,6 +7,7 @@ import { AccountingComponent } from './pages/accounting/accounting.component';
 import { PrestationComponent } from './pages/prestation/prestation.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ValidationComponent } from './pages/validation/validation.component';
+import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
 
 export const routes: Routes = [
   { path: 'customers', component: CustomerComponent },
@@ -22,6 +23,11 @@ export const routes: Routes = [
   {
     path: 'activation',
     component: ValidationComponent,
+    data: { displaySidebar: false },
+  },
+  {
+    path: 'password-forgotten',
+    component: PasswordForgottenComponent,
     data: { displaySidebar: false },
   },
 ];

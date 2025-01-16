@@ -50,6 +50,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ValidationComponent } from './pages/validation/validation.component';
 import { ActivationFormComponent } from './components/activation-form/activation-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { PasswordForgottenComponent } from './pages/password-forgotten/password-forgotten.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -93,6 +94,7 @@ class CustomeDateFormatter extends CalendarNativeDateFormatter {
     ValidationComponent,
     ActivationFormComponent,
     RegisterFormComponent,
+    PasswordForgottenComponent,
   ],
   imports: [
     BrowserModule,

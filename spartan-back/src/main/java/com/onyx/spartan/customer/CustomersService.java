@@ -114,4 +114,9 @@ public class CustomersService implements UserDetailsService {
                 .findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur ne correspond à cet identifiant"));
     }
+    public void updatePassword(Customers customer, String newPassword) {
+        String encodedPassword = passwordEncoder.encode(newPassword); // Assure-toi d'utiliser BCrypt ou similaire
+        customer.setPassword(encodedPassword);
+        customerRepository.save(customer);
+    }
 }
