@@ -42,7 +42,7 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
   redirectToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   togglePasswordVisibility(): void {
